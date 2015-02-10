@@ -1,5 +1,4 @@
 (function() {
-
     var animateObj = {};
 
     var translate = 100;
@@ -10,17 +9,33 @@
         return $(el).parent().find('.block');
     }
 
+    function findInput(el) {
+        return $(el).parent().find('input')[0];
+    }
+
+    function findOutput(el){
+        return $(el).parent().find('.output');
+    }
+
     function animate(el, options) {
         var deferred = Q.defer();
         $(el).animate(options, {
             queue: false,
             duration: duration,
             complete: function() {
-                deferred.resolve();
+                deferred.resolve(el);
             }
         });
 
         return deferred.promise;
+    }
+
+    function fetch(url){
+        return Promise.resolve($.getJSON(url));
+    }
+
+    function fetchUser(user){
+        return fetch('https://api.github.com/users/'+user)
     }
 
     function animateRight(el) {
@@ -39,6 +54,26 @@
         return animate(el, {top: '-=' + translate + 'px'});
     }
 
+    function animateUpRight(el){
+        return Q.all([animateUp(el), animateRight(el)])
+            .then(function(){
+                return el;
+            });
+    }
+
+    function animateWideHalf(el){
+        return Q.all([animateWide(el), opacityHalf(el)])
+            .then(function(){
+                return el;
+            });
+    }
+
+    function leftFull(el){
+        return Q.all([animateThin(el), opacityFull(el), animateLeft(el)]).then(function(){
+            return el;
+        });
+    }
+
     function animateWide(el){
         return animate(el, {width: '+='+ width + 'px'});
     }
@@ -52,13 +87,6 @@
     function opacityFull(el){
         return animate(el, {opacity : 1});
     }
-
-    animateObj.animate = animate;
-    animateObj.animateUp = animateUp;
-    animateObj.animateDown = animateDown;
-    animateObj.animateLeft = animateLeft;
-    animateObj.animateRight = animateRight;
-    animateObj.animateWide = animateWide;
 
 
     $(function() {
@@ -172,6 +200,80 @@
             $(element).animate({
                 top : '+=50px'
             }, 1000, _.partial(upRight, _.partial(wideSeeThrough,leftFull)));
+        });
+
+        var fetchAndRender = function() {
+            var button = this;
+            var input = findInput(this);
+            return fetchUser(input.value)
+                .then(function(json) {
+                    findOutput(button)[0].innerHTML = JSON.stringify(json, undefined, 2);//json.avatar_url;
+                });
+
+        };
+
+        function renderImage(el, json){
+            $(el).html('<img src="'+json.avatar_url+'">');
+            return el;
+        }
+        $('#example5').click(fetchAndRender);
+        $('#input5').keypress(function(e) {
+            if(e.which == 13) {
+                fetchAndRender.call(this);
+            }
+        });
+
+        var run6 = function() {
+            var block = findBlock(this);
+            var input = findInput(this);
+            return animateDown(block)
+                .then(animateUpRight)
+                .then(function(el) {
+                    return fetchUser(input.value)
+                        .then(function(json) {
+                            return renderImage(el, json);
+                        });
+                })
+                .then(animateWideHalf)
+                .then(leftFull)
+                .fail(function(err) {
+                    console.log(err.stack);
+                });
+
+        };
+
+        var run7 = function() {
+            var block = findBlock(this);
+            var input = findInput(this);
+            return animateDown(block)
+                .then(animateUpRight)
+                .then(function(el) {
+                    return fetchUser(input.value)
+                        .then(function(json) {
+                            return renderImage(el, json);
+                        }, function(error){
+                            $(el).html('x');
+                            return el;
+                        })
+                })
+                .then(animateWideHalf)
+                .then(leftFull)
+                .fail(function(err) {
+                    console.log(err.stack);
+                });
+
+        };
+        $('#example6,#example8').click(run6);
+        $('#input6').keypress(function(e) {
+            if(e.which == 13) {
+                run6.call(this);
+            }
+        });
+        $('#example7').click(run7);
+        $('#input7').keypress(function(e) {
+            if(e.which == 13) {
+                run7.call(this);
+            }
         });
     })
 

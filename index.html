@@ -41,6 +41,9 @@
                 height : 50px;
                 width : 200px;
             }
+            .block img{
+                margin : 0 !important;
+            }
             .block {
                 position: absolute;
                 background-color: #abc;
@@ -93,12 +96,6 @@
                         <li>Potential pitfalls</li>
                     </ul>
                 </section>
-
-                <!--<section> TODO-->
-                    <!--<h2>Promises are a tool</h2>-->
-                    <!--<p>A very powerful tool</p>-->
-                    <!--<p>to make sense of asynchronous code</p>-->
-                <!--</section>-->
                 <section>
                     <h2>Best demonstrated with an example</h2>
                     <p>using jQuery animate()</p>
@@ -114,7 +111,9 @@
                         <li>Go back</li>
                     </ol>
                     <button id="example-done">Run Example</button>
-                    <div class="block"></div>
+                    <div class="block">
+
+                    </div>
                 </section>
                 <section>
                     <section>
@@ -464,19 +463,223 @@ goDown(element)
 
                 </section>
                 <section>
-                    <h2>New Example</h2>
-                    <p>Shamelessly taken from <a href="http://www.html5rocks.com/en/tutorials/es6/promises/">HTML5Rocks</a> example</p>
+                    <h2>Let's complicate our example</h2>
+                    <p>New requirement</p>
                     <ul>
-                        <li>Start up a spinner</li>
-                        <li>Fetch some JSON from our server</li>
-                        <li>Fetch child JSON</li>
-                        <li>Render child data to page</li>
-                        <li>Stop the spinner</li>
+                        <li>Query github for a user</li>
+                        <li>Then place user gravatar inside our box</li>
+                        <li>User feedback states that this must occur inbetween step 2 and 3</li>
+                        <li>May not fetch image beforehand</li>
                     </ul>
 
                 </section>
-			</div>
+                <section>
+                    <section>
+                        <h2>How might this work?</h2>
+                        <p>first we need to grab some json</p>
+                        <pre><code>
+function fetch(url){
+    var jqueryDeferred = $.getJSON(url);
+    return Promise.resolve(jqueryDeferred);  // wrap jquery promises!
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>some glue code</h2>
+<pre><code>
+    function fetchUser(user){
+        return fetch('https://api.github.com/users/'+user)
+    }
+    var submitAndRender = function() {
+        var button = this;
+        var input = findInput(this);
+        fetchUser(input.value)
+            .then(function(json) {
+                findOutput(button)[0].innerHTML = JSON.stringify(json, undefined, 2);
+            });
 
+    };
+    $('#example5').click(submitAndRender);
+    $('#input5').keypress(function(e) {
+        if(e.which == 13) {
+            submitAndRender.call(this);
+        }
+    });
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Next</h2>
+                        <p>now let's see some example json</p>
+                        <input id="input5" type="text">
+                        <button id="example5">Fetch</button>
+                        <div><small class="output"> </small></div>
+                    </section>
+                </section>
+                <section>
+                    <pre><code>function renderImage(el, json){
+    $(el).html('<img src="'+json.avatar_url+'">');
+    return el;
+}
+var block = findBlock(this);
+var input = findInput(this);
+return animateDown(block)
+    .then(animateUpRight)
+    .then(function(el) {
+        return fetchUser(input.value)
+            .then(function(json) {
+                return renderImage(el, json);
+            });
+    })
+    .then(animateWideHalf)
+    .then(leftFull);
+});</code></pre>
+                    <div class="block" style="top:-60px"></div>
+                    <button id="example6">Run</button>
+                    <input id="input6" type="text">
+                </section>
+                <section>
+                    <h2>Error Handling</h2>
+                    <p>Promises can't be broken</p>
+                    <blockquote class="fragment">Read my lips:  No new taxes!</blockquote>
+                    <p class="fragment">or</p>
+                    <blockquote class="fragment">If you like your health care plan, you can keep it!</blockquote>
+                    <p class="fragment">But they can be rejected.</p>
+
+                </section>
+                <section>
+                    <h2>Handling rejection</h2>
+                    <h3>Two ways</h3>
+                    <pre><code>
+return animateDown(block)
+    .then(animateUpRight)
+    .then(function(el) {
+        return fetchUser(input.value)  // this can be rejected!
+            .then(function(json) {
+                return renderImage(el, json);
+            }, function(error){
+                $(el).html('x');
+                return el;  // continue the chain
+            );
+    })
+    .then(animateWideHalf)
+    .then(leftFull)
+    .catch(function(err){
+       //  handle error here
+    }
+                    </code></pre>
+                    <div class="block" style="top:-20px"></div>
+                    <button id="example7">Run</button>
+                    <input id="input7" type="text">
+                </section>
+                <section>
+                    <section>
+                        <h2>Potential Pitfalls</h2>
+                        <p>Error handling</p>
+                        <pre><code>
+return fetchUser(input.value)  // this can be rejected!
+    .then(function(json) {
+        return renderImage(el, json);
+    }, function(error){
+        $(el).html('x');
+        return el;  // continue the chain
+    );
+
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Potential Pitfalls</h2>
+                        <p>Catching errors from renderImage</p>
+                        <pre><code>
+return fetchUser(input.value)  // this can be rejected!
+    .then(function(json) {
+        return renderImage(el, json);
+    }, function(error){
+        $(el).html('x');
+        return el;  // continue the chain
+    ).then(undefined, function(error){
+        // called when/if renderImage fails
+    });
+
+                        </code></pre>
+                    </section>
+                     <section>
+                        <h2>Potential Pitfalls</h2>
+                        <p>Using .catch()</p>
+                        <pre><code>
+return fetchUser(input.value)  // this can be rejected!
+    .then(function(json) {
+        return renderImage(el, json);
+    }, function(error){
+        $(el).html('x');
+        return el;  // continue the chain
+    ).catch(function(error){
+        // called when/if renderImage fails
+    });
+
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h2>Potential Pitfalls</h2>
+                    <p>Once you're in the promised land, try to stay there.</p>
+                </section>
+                <section>
+                    <section>
+                        <h2>Errors can be swallowed</h2>
+                        <p>This is a feature!</p>
+                        <p class="fragment">But usually one that catches one by surprise</p>
+                    </section>
+                    <section>
+                        <h2>Example</h2>
+                          <pre><code>
+return fetchUser(input.value)  // this can be rejected!
+    .then(function(json) {
+        return renderImage(el, json);
+    })
+.then(animateWideHalf);
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h2>Potential Pitfalls</h2>
+                    <p>You can get lost in the promised land</p>
+                    <p class="fragment">Especially if using a library like Q</p>
+                    <pre class="fragment"><code>
+function animate(el, options){
+    var deferred = Q.defer();
+    $(el).animate(options, {  ///  if this line throws an exception
+        queue: false,
+        duration: duration,
+        complete: function() {
+            deferred.resolve(el);
+        }
+    });
+    return deferred.promise;
+}
+                        </code></pre>
+                </section>
+                <section>
+                    <h2>Potential Pitfalls</h2>
+                    <p>Stack traces can disappear</p>
+                    <p class="fragment">Consequence of the async nature of promises</p>
+                    <div class="block" style="top:-20px"></div>
+                    <button id="example8">Run</button>
+                </section>
+                <section>
+                    <h2>Conclusion</h2>
+                    <p>I hope I've given you a good understanding of promises</p>
+                    <p class="fragment">And why they are really powerful</p>
+                    <p class="fragment">What's next?  Generators </p>
+                </section>
+                <section>
+                    <h2>Questions?</h2>
+                </section>
+                <section>
+                    <h2>Thanks!!</h2>
+
+                </section>
+			</div>
+<!--TODO show promise.all-->
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
