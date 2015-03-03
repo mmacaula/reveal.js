@@ -544,17 +544,17 @@ return animateDown(block)
                         <h2>Image loading... </h2>
                         <p> As a promise!</p>
                         <pre><code>function renderImage(el, json){
-    return new Promise(function(resolve, reject){
-        var image = new Image();
-        image.onload = function(){
-            resolve(el);
-        };
-        image.onerror = function(){
-            reject(el);
-        }
-        image.src =json.avatar_url;
-        $(el).html(image);
-    });                        </code></pre>
+return new Promise(function(resolve, reject){
+    var image = new Image();
+    image.onload = function(){
+        resolve(el);
+    };
+    image.onerror = function(){
+        reject(el);
+    }
+    image.src =json.avatar_url;
+    $(el).html(image);
+});                        </code></pre>
                     </section>
                 </section>
                 <section>
