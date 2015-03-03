@@ -211,10 +211,24 @@
                 });
 
         };
-
-        function renderImage(el, json){
+        function renderImageNaive(el, json){
             $(el).html('<img src="'+json.avatar_url+'">');
             return el;
+        }
+
+        function renderImage(el, json){
+            return new Promise(function(resolve, reject){
+                var image = new Image();
+                image.onload = function(){
+                    resolve(el);
+                };
+                image.onerror = function(){
+                    reject(el);
+                }
+                image.src =json.avatar_url;
+                $(el).html(image);
+            });
+
         }
         $('#example5').click(fetchAndRender);
         $('#input5').keypress(function(e) {
@@ -231,7 +245,7 @@
                 .then(function(el) {
                     return fetchUser(input.value)
                         .then(function(json) {
-                            return renderImage(el, json);
+                            return renderImageNaive(el, json);
                         });
                 })
                 .then(animateWideHalf)
@@ -263,6 +277,63 @@
                 });
 
         };
+
+        function handleError(element){
+            return function(error){
+                $(element).html('x');
+                return element;
+            }
+        }
+
+        var run8 = function() {
+            var block = findBlock(this);
+            var input = findInput(this);
+            var fetchUserPromise;  // declare it up front
+            return animateDown(block)
+                .then(function(element){
+                    fetchUserPromise = fetchUser(input.value); // kick this off
+                    return element; // remember to keep the chain going
+                })
+                .then(animateUpRight)
+                .then(function(el) {
+                    return fetchUserPromise
+                        .then(function(json) {
+                            return renderImage(el, json);
+                        }).catch(handleError(el));
+                })
+                .then(animateWideHalf)
+                .then(leftFull)
+                .fail(function(err) {
+                    console.log(err.stack);
+                });
+
+        };
+
+        var run9 = function() {
+            var block = findBlock(this);
+            var input = findInput(this);
+            var fetchUserPromise;  // declare it up front
+            return animateDown(block)
+                .then(function(element){
+                    fetchUserPromise = fetchUser(input.value); // kick this off
+                    return element; // remember to keep the chain going
+                })
+                .then(function(el){
+                    return Promise.all([animateUpRight(el),fetchUserPromise]);
+                })
+                .then(function(results) {
+                    var el = results[0],
+                        json = results[1];
+                        return renderImage(el, json)
+                            .catch(handleError(el));
+                })
+                .then(animateWideHalf)
+                .then(leftFull)
+                .fail(function(err) {
+                    console.log(err.stack);
+                });
+
+        };
         $('#example6,#example8').click(run6);
         $('#input6').keypress(function(e) {
             if(e.which == 13) {
@@ -275,6 +346,22 @@
                 run7.call(this);
             }
         });
+
+        $('#example8').click(run8);
+        $('#input8').keypress(function(e) {
+            if(e.which == 13) {
+                run8.call(this);
+            }
+        });
+
+        $('#example9').click(run9);
+        $('#input9').keypress(function(e) {
+            if(e.which == 13) {
+                run9.call(this);
+            }
+        });
+
+
     })
 
 })();

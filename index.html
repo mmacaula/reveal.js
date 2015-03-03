@@ -453,10 +453,7 @@ goDown(element)
 .then(leftFull);
                             </code></pre>
                     </section>
-                    <!--<section>-->
-                        <!--<h2>We can even go a little further</h2>-->
-                        <!---->
-                    <!--</section>-->
+
                     </section>
                 <section>
                     <h2>Pretty cool... </h2>
@@ -492,25 +489,24 @@ function fetch(url){
                     </section>
                     <section>
                         <h2>some glue code</h2>
-<pre><code>
-    function fetchUser(user){
-        return fetch('https://api.github.com/users/'+user)
-    }
-    var submitAndRender = function() {
-        var button = this;
-        var input = findInput(this);
-        fetchUser(input.value)
-            .then(function(json) {
-                findOutput(button)[0].innerHTML = JSON.stringify(json, undefined, 2);
-            });
+<pre><code>function fetchUser(user){
+    return fetch('https://api.github.com/users/'+user)
+}
+var submitAndRender = function() {
+    var button = this;
+    var input = findInput(this);
+    fetchUser(input.value)
+        .then(function(json) {
+            findOutput(button)[0].innerHTML = JSON.stringify(json, undefined, 2);
+        });
 
-    };
-    $('#example5').click(submitAndRender);
-    $('#input5').keypress(function(e) {
-        if(e.which == 13) {
-            submitAndRender.call(this);
-        }
-    });
+};
+$('#example5').click(submitAndRender);
+$('#input5').keypress(function(e) {
+    if(e.which == 13) {
+        submitAndRender.call(this);
+    }
+});
 </code></pre>
                     </section>
                     <section>
@@ -522,7 +518,8 @@ function fetch(url){
                     </section>
                 </section>
                 <section>
-                    <pre><code>function renderImage(el, json){
+                    <section>
+                        <pre><code>function renderImageNaive(el, json){
     $(el).html('<img src="'+json.avatar_url+'">');
     return el;
 }
@@ -533,15 +530,84 @@ return animateDown(block)
     .then(function(el) {
         return fetchUser(input.value)
             .then(function(json) {
-                return renderImage(el, json);
+                return renderImageNaive(el, json);
             });
     })
     .then(animateWideHalf)
     .then(leftFull);
 });</code></pre>
-                    <div class="block" style="top:-60px"></div>
-                    <button id="example6">Run</button>
-                    <input id="input6" type="text">
+                        <div class="block" style="top:-60px"></div>
+                        <button id="example6">Run</button>
+                        <input id="input6" type="text">
+                    </section>
+                    <section>
+                        <h2>Image loading... </h2>
+                        <p> As a promise!</p>
+                        <pre><code>function renderImage(el, json){
+    return new Promise(function(resolve, reject){
+        var image = new Image();
+        image.onload = function(){
+            resolve(el);
+        };
+        image.onerror = function(){
+            reject(el);
+        }
+        image.src =json.avatar_url;
+        $(el).html(image);
+    });                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>More control</h2>
+                        <p>Users relent (a little)</p>
+                        <p>How might we do this?</p>
+                    </section>
+                    <section>
+                        <h2>Promises as control flow</h2>
+                      <pre><code>var fetchUserPromise;  // declare it up front
+return animateDown(block)
+    .then(function(element){
+        fetchUserPromise = fetchUser(input.value); // kick this off
+        return element; // remember to keep the chain going
+    })
+    .then(animateUpRight)
+    .then(function(el) {
+        return fetchUserPromise
+            .then(function(json) {
+                return renderImage(el, json);
+            }).catch(handleError(el));
+    })
+    .then(animateWideHalf)  // and so on
+</code></pre>
+                        <div class="block" style="top:-60px"></div>
+                        <button id="example8">Run</button>
+                        <input id="input8" type="text">
+                    </section>
+                    <section>
+                        <h2>Introducing Promise.All()</h2>
+                      <pre><code>var fetchUserPromise;  // declare it up front
+return animateDown(block)
+    .then(function(element){
+        fetchUserPromise = fetchUser(input.value); // kick this off
+        return element; // remember to keep the chain going
+    })
+    .then(function(el){
+        return Promise.all([animateUpRight(el),fetchUserPromise]);
+    })
+    .then(function(results) {
+        var el = results[0],
+            json = results[1];
+            return renderImage(el, json)
+                .catch(handleError(el));
+    })
+    .then(animateWideHalf)  // and so on
+</code></pre>
+                        <div class="block" style="top:-60px"></div>
+                        <button id="example9">Run</button>
+                        <input id="input9" type="text">
+                    </section>
+
                 </section>
                 <section>
                     <h2>Error Handling</h2>
@@ -685,7 +751,6 @@ function animate(el, options){
 
                 </section>
 			</div>
-<!--TODO show promise.all-->
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
