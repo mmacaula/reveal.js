@@ -66,41 +66,51 @@
         <section>
             <h2>Agenda</h2>
             <ul>
-                <li>Backbone</li>
-                <li>The "cool" kids</li>
-                <!--insert the logos of the cool kids-->
-                <li></li>
-            </ul>
-        </section>
-        <section>
-            <h2>Agenda #2</h2>
-            <ul>
+
                 <li>Current state of things</li>
                 <li>Left behind?</li>
                 <!--insert the logos of the cool kids-->
-                <li>Upgrading Backbone</li>
-                <li>Or not</li>
+                <li>Ways to reinvigorate</li>
             </ul>
         </section>
         <section>
-            <h2>My experience</h2>
-            <p>2012</p>
-            <img data="show graph of backbone vs angular, but cut off in 2012">
+            <h2>Let's go way back</h2>
+            <p class="fragment">2012</p>
+            <img class="fragment" src="lib/trends-2012.png">
             <aside class="notes">Talk about our tradeoffs, angular and ember and backbone were our choices basically, and still around today
             but we picked flexibility over the 'magic' of angular and the 'ember' way</aside>
         </section>
         <section>
-            <h2>The rise of Angular</h2>
-            <aside class="notes">Show current graph, with caveats of it not being the end all be all.  Maybe Angular is just so complex it has a lot of people searching for it
-            but we see its popularity everywhere so its not just a fluke.  </aside>
+            <h2>Fast forward</h2>
+            <img src="lib/trends-current.png">
+            <aside class="notes">with caveats of it not being the end all be all.  Maybe Angular is just so complex it has a lot of people searching for it
+            but we see its popularity everywhere so its not just a fluke.</aside>
         </section>
         <section>
             <h2>The rise of React</h2>
-            <aside class="notes">Note how many talks on React at this conference, how many on Angular</aside>
+            <img src="lib/trends-current-react-3.png">
+            <aside class="notes">There are 2 talks on React, 3 on angular, 1 on backbone (mine)</aside>
         </section>
         <section>
+            <h2>The others</h2>
+            <img class="fragment" src="http://i.ytimg.com/vi/91C701Jq-tU/maxresdefault.jpg">
+        </section>
+        <section>
+            <h2>The others</h2>
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; height : 200px;">
+                <img src="http://ionicframework.com/present-ionic/slides/img/angular-icon.png"> 
+                <img src="http://developerlight.com/wp-content/uploads/2014/08/react.png">
+                <img src="http://media.mediatemple.netdna-cdn.com/wp-content/uploads/2013/11/emberjs-logo.png" >
+                <img src="https://blog.polymer-project.org/images/logos/p-logo.png">
+                <img src="./lib/todo-mvc.png">
+            </div >
+            <aside class="notes">Show current graph, with caveats of it not being the end all be all.  Maybe Angular is just so complex it has a lot of people searching for it
+            but we see its popularity everywhere so its not just a fluke.  </aside>
+        </section>
+        
+        <section>
             <h2>Meanwhile</h2>
-            <p>Not much happening with backbone itself</p>
+            <p>Not much happening with Backbone itself</p>
             <p>No real roadmap</p>
             <aside class="notes">In many ways Marionette has taken the lead for backbone development</aside>
         </section>
@@ -109,30 +119,336 @@
             <h3>If Yes: </h3>
             <p>Then that stinks</p>
 
-            <aside class="notes">If so, then that sucks, we've put a lot of time and effort into our app
+            <aside class="notes">we've put a lot of time and effort into our app
                 Not only that, its harder to recruit devs to work on tech considered 'not cool' or 'not fun'</aside>
         </section>
         <section>
             <h2>Not all is lost!</h2>
             <p class="fragment">That's why you're here!</p>
-            <aside class="notes">Make a joke about it still being OK to join the talk across the hall.
-            We're in a much better place than we think</aside>
+            <aside class="notes">If you're still here, this is the emotional low point, it gets better from here on out</aside>
         </section>
         <section>
-            <h2>We may be the first, but we're not the last</h2>
-            <p>First off, the new kids are not immune to this effect</p>
+            <h2>Backbone is not unique, just the "first"</h2>
+            <ul>
+                <li>The new kids are not immune to this effect</li>
+                <li class="fragment">Angular 2.0 will be a difficult upgrade path</li>
+                <li class="fragment">The next big thing</li>
             <aside class="notes">Angular 2.0 and its difficult upgrade path.  Rise or React.  What's in the future?</aside>
         </section>
         <section>
-            <h2>Backbone</h2>
-            <diagram>Showing models  / views / templating lib</diagram>
-        </section>
-        <!-- You could just now be getting really good at backbone.  According to <reference> it can take many <time> to get proficient at something-->
+            <section>
+                <h2>What is Backbone?</h2>
+                <img height=500 src="http://williambrownstreet.net/work/backbonejs.slides/codemirror/introduction/images/mvc-backbone.png">
+                <small>http://williambrownstreet.net/work/backbonejs.slides/codemirror/introduction/images/mvc-backbone.png</small>
+            </section>
+             <section>
+                <h2>Marionette</h2>
+                <img src="lib/marionette.png">
+                <aside class="notes">
+                Other items Marionette gives you, communication mechanisms, behaviors, etc.  
+                Note that models don't really change with marionette</aside>
+            </section>
+        </section>    
         <section>
-            <h2>Marionette</h2>
-            <diagram> show extra views marionette gives you, show new cool things as well Radio, behaviors.
-            </diagram>
-            <aside class="notes">Note that models don't really change with marionette</aside>
+            <h2>Fundamentals</h2>
+            <p>Backbone follows a MVC-like pattern</p>
+            <p>And follows it fairly well</p>
+        </section>    
+        <section>
+            <h2>Amount of code in a typical Backbone Application</h2>
+            <img height=500 src="./lib/backbone-code.png">
+            <aside class="notes">Interfaces between these are very well defined</aside>
+        </section>
+        <section>
+            <h2>These interfaces are very decoupled</h2>
+            <img height=500 src="http://williambrownstreet.net/work/backbonejs.slides/codemirror/introduction/images/mvc-backbone.png">
+        </section>
+        <section>
+            <h2>Decoupled interfaces are replaceable</h2>
+            <p>Let's check out an example</p>
+            <p class="fragment">Templating</p>
+        </section>
+        <section>
+            <h2>How we did it</h2>
+            <pre><code class="js" data-trim>
+var ich = require('icanhaz');            
+var templateText = require('text!assets/templates/myTemplate.html');
+ich.addTemplate('myTemplate', templateText);
+
+MyView =  Backbone.View.extend({
+
+    render : function(){
+       this.$el.html(ich.myTemplate(this.model.toJSON())); 
+    }
+});
+return MyView;      
+            </code></pre>
+            <p class="fragment">AMD, Loading and compiling template are details</p>
+            <aside class="notes">Let's look at the 'interfaces' AMD, Load text and compile on the client are all specifics</aside>
+        </section>
+        <section>
+            <h2>Or it could be this:</h2>
+              <pre><code class="js" data-trim>
+var myTemplateFunction = require('path/to/myTemplateFunc');
+MyView =  Backbone.View.extend({
+
+    render : function(){
+       this.$el.html(myTemplateFunc(this.model.toJSON()));
+    }
+});
+return MyView;      
+            </code></pre>  
+            <p class="fragment">This is actually what we did</p>
+            <p class="fragment">myTemplateFunc is actually a handlebars compiled function</p>
+        </section>
+        <section>
+            <h2>This is better</h2>
+            <p>Start using it on all new or 'touched' code</p>
+            <p>Get to:</p>
+            <img class="fragment" src="lib/backbone-code-templates.png">
+        </section>
+        <section>
+            <h2>Let's keep going</h2>
+            <div class="fragment">
+                <p>Polymer / WebComponents</p>
+                <div class="flex">
+                    <img height=200 src="https://blog.polymer-project.org/images/logos/p-logo.png">
+                    <img height=200 src="http://webcomponents.org/img/logo.svg"
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Quick Primer</h2>
+            <ul>
+                <li>Custom Elements like "< video >"</li>
+                <li class="fragment">Wholly replace some views in your app</li>
+                <li class="fragment">Where it makes sense</li>
+            </ul>
+            <aside class="notes">Ask for how many have heard of them</aside>
+        </section>
+        <section>
+            <h2>Old View / Template</h2>
+            <pre><code class="js" data-trim>
+Backbone.View.extend({
+    events : { 'click .myButton' : 'onClick'},
+    onClick : function(event){
+      this.$el.addClass('selected');
+    }
+});
+</code></pre>
+<pre><code class="html" data-trim>
+// Template
+<span> {{foo}} - {{bar}} <button class="myButton"></button></span>
+</code></pre>
+        </section>
+        <section>
+            <h2>New View / Template</h2>
+<pre><code class="js" data-trim>
+Backbone.View.extend({
+// no events or handler, the custom element handles it for us
+})
+</code></pre>
+<pre><code class="html" data-trim>
+// Template
+<my-custom-element foo="{{foo}}" bar="{{bar}}"></my-custom-element>
+</code></pre>
+        </section>
+        <section>
+            <h2>Some Caveats for Web Components</h2>
+            <p class="fragment">Production ready?</p>
+            <p class="fragment">Custom Elements vs Full Web Component</p>
+        </section>
+        <section>
+            <h2>How we're using them today</h2>
+            <p>Using just Custom Elements</p>
+            <p>Best example is Github's <a href="https://github.com/mmacaula/reveal.js">custom </a>'time' element</p>
+              <pre><code class="html" data-trim>
+<time is="relative-time" datetime="{{isoDate}}">{{model.modifyDt}}</time>
+            </code></pre>
+        </section>
+        <section>
+            <h2>Back to our chart</h2>
+            <img src="lib/backbone-templates-webcomponents.png">
+            <aside class="notes">Taking a look at models next</aside>
+        </section>
+        <section>
+            <h2>Backbone.Model</h2>
+
+            <img height=500 src="http://williambrownstreet.net/work/backbonejs.slides/codemirror/introduction/images/mvc-backbone.png">
+            <aside class="notes">Again, note well defined interfaces</aside>
+        </section>
+        <section>
+            <h2>Backbone.Model</h2>
+            <p>Well defined interface:</p>
+            <ul>
+                <li>`on`, `listenTo` for Events</li>
+                <li>`get` and `set` for changing data</li>
+            </ul>
+        </section>
+        <section>
+            <h2>My issue with Backbone.Model</h2>
+            <p class="fragment">`get` and `set` to change my data</p>
+            <pre><code class="fragment js" data-trim>
+this.model.set('foo', myValue); 
+
+// this would be much nicer
+this.model.foo = myValue;
+</code></pre>
+        </section>  
+        <section>
+            <h2>This is an issue</h2>
+            <p>almost every framework or library out there deals with POJOS</p>
+            <ul>
+                <li class="fragment">Angular</li>
+               <li class="fragment">React</li>
+               <li class="fragment">Polymer</li>
+               <li class="fragment">D3</li>
+               <li class="fragment">etc</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Typical solution</h2>
+         <pre><code class="fragment js" data-trim>
+         var modelRepresentation = this.model.toJSON();
+// pass modelRepresentation to other libs
+         </code></pre> 
+         <p class="fragment">But we lose our awesome eventing</p>
+         <p class="fragment">Especially if these libraries mutate our data</p>
+        </section>
+        <section>
+            <h2>One solution</h2>
+            <div class="fragment">
+                <h3>Ampersand.js</h3>
+                <img src="https://raw.githubusercontent.com/AmpersandJS/ampersandjs.com/gh-pages/public/images/logo-ampersand.png">
+        </section>
+        <section>
+            <h2>Ampersand.js</h2>
+            <blockquote>A highly modular, loosely coupled, non-frameworky framework for building advanced JavaScript apps.</blockquote>
+        </section>
+        <section>
+            <h2>Ampersand State / Model</h2>
+            <p>Almost a drop-in replacement for Backbone.Model</p>
+                        <pre><code class="fragment js" data-trim>
+this.model.set('foo', myValue); // this still works!
+
+// this is now possible!
+this.model.foo = myValue;
+// eventing still works!
+</code></pre>
+        </section>
+        <section>
+            <h2>Ampersand Features</h2>
+            <ul>
+                <li>Derived Properties</li>
+                <li>Relational Models</li>
+                <li>A view class, subcollections, and much more </li>
+            </ul>
+        </section>
+        <section>
+            <h2>What we did</h2>
+            <p class="fragment">Began re-writing all our models as Ampersand.js Models</p>
+            <p class="fragment">Began using Ampersand Views for new views</p>
+            <p class="fragment">Did not have to rewrite existing Backbone Views!!</p>
+            <aside class="notes"></aside>
+        </section>
+        <section>
+            <h2>So now we have</h2>
+            <img src="lib/ampersand-architecture.png">
+            <h2 class="fragment">Next up</h2>
+        </section>
+        <section>
+            <h2>React</h2>
+            <img height=400 src="http://developerlight.com/wp-content/uploads/2014/08/react.png">
+            <aside class="notes">New kid on the block\npromises to be fast</aside>
+        </section>
+        <section>
+            <h2>What is React?</h2>
+            <p class="fragment">Tons of tutorials out there</p>
+            <p class="fragment">We can think of it as another replacement for Backbone.View</p>
+        </section>
+        <section>
+            <h2>React vs Backbone.View</h2>
+            <img src="./lib/react-example.png">
+        </section>
+        <section>
+            <h2>React vs Backbone.View</h2>
+            <img height=600 src="./lib/backbone-react-equiv.png">
+        </section>
+        <section>
+            <h2>Marrying React with Backbone</h2>
+            <pre><code class="js" data-trim>
+            var MyWidget = React.createClass({
+  handleClick: function() {
+    alert('Hello!');
+  },
+  render: function() {
+    return (
+      <a href="#" onClick={this.handleClick}>Do something!</a>
+    );
+  }
+});
+
+var MyView = Backbone.View.extend({
+  el: 'body',
+  template: '<div class="widget-container"></div>',
+  render: function() {
+    this.$el.html(this.template);
+    React.renderComponent(new MyWidget(), this.$('.widget-container').get(0));
+    return this;
+  }
+});
+
+new MyView().render();
+</code></pre>
+            <small>Borrowed from <a href="http://blog.mayflower.de/3937-Backbone-React.html">http://blog.mayflower.de/3937-Backbone-React.html</a></small>
+        </section>
+
+        <section>
+            <h2>So now we *could* have</h2>
+            <img src="lib/react-architecture.png">
+        </section>
+
+        <section>
+            <h2>But do we really want this?</h2>
+            <div style="display:flex;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Frankenstein%27s_monster_%28Boris_Karloff%29.jpg/340px-Frankenstein%27s_monster_%28Boris_Karloff%29.jpg">
+                <img src="lib/react-architecture.png">
+            </div>
+        </section>
+        <section>
+            <h2>Probably not</h2>
+            <p class="fragment">As always, it depends</p>
+            <p class="fragment">What we don't want</p>
+            <img height=400 class="fragment" src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-ohh-look-squirrel.png">
+            <aside class="notes">We don't want to go off chasing every new framework like a squirrel</aside>
+        </section>
+        <section>
+            <h2>Progressive Maintenance</h2>
+            <h3 class="fragment">"Enhancement" was taken</h3>
+            <p class="fragment">Find an approach that works for you</p>
+        </section>
+        <section>
+            <h2>Our approach</h2>
+            <ol>
+                <li>Survey what is out there</li>
+                <li>Test to make sure it works in your system</li>
+                <li>Start small, find out the pain points</li>
+                <li>Favor refactoring / upgrading when you 'touch' old code</li>
+                <li>Rinse and repeat</li>
+            </ol>
+        </section>
+        <section>
+            <h2>Our current architecture:</h2>
+            <img src="lib/aviture-architecture.png">
+        </section>
+        <section>
+            <h2>What you choose should be best for your company / application</h2>
+
+        </section>
+        <section>
+            <h2>Conclusion</h2>
+            <h2 class="fragment">Questions?</h2>
+            <aside class="notes">We chose a flexible framework, part of the beauty is that you can start small</aside>
         </section>
     </div>
 
