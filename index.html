@@ -76,8 +76,8 @@
 
                         <h2>Who Am I?</h2>
                         <ul>
-                            <li>Java for about 8 years</li>
-                            <li>Moved to Omaha 2.5 years ago</li>
+                            <li>Java for about 8 years out of college</li>
+                            <li>Moved to Omaha 3 years ago</li>
                             <li>Web / Javascript developer ever since</li>
                         </ul>
                     </section>
@@ -93,6 +93,7 @@
                         <li>Introduction to promises</li>
                         <li>Why they're useful</li>
                         <li>How you can use them</li>
+                        <li>Advanced uses</li>
                         <li>Potential pitfalls</li>
                     </ul>
                 </section>
@@ -122,7 +123,7 @@
 
                     <section>
                         <h2>Let's go down then up</h2>
-                        <pre><code data-trim>
+                        <pre class=""><code data-trim>
 // API Reference
 // element.animate(options, duration, callback);
 $(element).animate({
@@ -193,9 +194,12 @@ var upRight = function() {
         left: '+=50px'
     }, 1000, wideSeeThrough);
 };
-$(element).animate({
-    top : '+=50px'
-}, 1000, upRight);
+var goDown = function() {
+    $(element).animate({
+        top : '+=50px'
+    }, 1000, upRight);
+};
+goDown();
                     </code></pre>
                         <h4>Hardly better.  We've flattened the pyramid but made harder to read</h4>
                     </section>
@@ -221,9 +225,12 @@ var upRight = function(cb) {
         left: '+=50px'
     }, 1000, cb);
 };
-$(element).animate({
-    top : '+=50px'
-}, 1000, upRight(wideSeeThrough(leftFull)));
+var goDown = function(cb) {
+    $(element).animate({
+        top : '+=50px'
+    }, 1000, cb);
+};
+goDown(upRight(wideSeeThrough(leftFull)));
                             </code></pre>
                         <div class="block"></div>
                         <button id="example3">Run</button>
@@ -237,10 +244,8 @@ $(element).animate({
 var leftFull = // function def
 var wideSeeThrough = // function def
 var upRight =// function def
-
-$(element).animate({
-    top : '+=50px'
-}, 1000, _.partial(upRight, _.partial(wideSeeThrough,leftFull)));
+var goDown = // function def
+goDown(_.partial(upRight, _.partial(wideSeeThrough,leftFull)));
                         </code></pre>
                         <div class="block"></div>
                         <button id="example4">Run</button>
