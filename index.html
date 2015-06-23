@@ -45,7 +45,7 @@
 
             <p>
                 <small>Created by <a href="http://michaelmac.org">Mike Macaulay</a> /
-                    <a href="http://twitter.com/mmacauls">@mmacaula</a></small>
+                    <a href="http://twitter.com/mmacaula">@mmacaula</a></small>
             </p>
         </section>
         <section>
@@ -66,13 +66,12 @@
         <section>
             <h2>Agenda</h2>
             <ul>
-
                 <li>Current state of things</li>
                 <li>Left behind?</li>
-                <!--insert the logos of the cool kids-->
                 <li>Ways to reinvigorate</li>
             </ul>
         </section>
+        
         <section>
             <h2>Let's go way back</h2>
             <p class="fragment">2012</p>
@@ -93,16 +92,19 @@
         </section>
         <section>
             <h2>The others</h2>
-            <img class="fragment" src="http://i.ytimg.com/vi/91C701Jq-tU/maxresdefault.jpg">
+            <div class="fragment">
+                <img src="lib/the-others.jpg">
+                <small>http://i.ytimg.com/vi/91C701Jq-tU/maxresdefault.jpg</small>
+            </div>
         </section>
         <section>
             <h2>The others</h2>
             <div style="display:flex; flex-wrap:wrap; justify-content:center; height : 200px;">
-                <img src="http://ionicframework.com/present-ionic/slides/img/angular-icon.png"> 
-                <img src="http://developerlight.com/wp-content/uploads/2014/08/react.png">
-                <img src="http://media.mediatemple.netdna-cdn.com/wp-content/uploads/2013/11/emberjs-logo.png" >
-                <img src="https://blog.polymer-project.org/images/logos/p-logo.png">
-                <img src="./lib/todo-mvc.png">
+                <img src="lib/angular-icon.png"> 
+                <img src="lib/react-icon.png">
+                <img src="lib/ember-icon.png" >
+                <img src="lib/polymer-icon.png">
+                <img src="lib/todo-mvc.png">
             </div >
             <aside class="notes">Show current graph, with caveats of it not being the end all be all.  Maybe Angular is just so complex it has a lot of people searching for it
             but we see its popularity everywhere so its not just a fluke.  </aside>
@@ -136,9 +138,21 @@
             <aside class="notes">Angular 2.0 and its difficult upgrade path.  Rise or React.  What's in the future?</aside>
         </section>
         <section>
+            <h2>My Story</h2>
+            <ul>
+                <li class="fragment">Large Single Page App</li>
+                <li class="fragment">WebGL application</li>
+                <li class="fragment">Backbone was great but...</li>
+                <li class="fragment">Marionette</li>
+                <li class="fragment">Explosion of other frameworks</li>
+                <li class="fragment">Left us feeling lost and left behind</li>
+            </ul>
+            <p class="fragment">How we managed to reinvigorate</p>
+        </section>
+        <section>
             <section>
                 <h2>What is Backbone?</h2>
-                <img height=500 src="http://williambrownstreet.net/work/backbonejs.slides/codemirror/introduction/images/mvc-backbone.png">
+                <img height=500 src="lib/backbone-chart.png">
                 <small>http://williambrownstreet.net/work/backbonejs.slides/codemirror/introduction/images/mvc-backbone.png</small>
             </section>
              <section>
@@ -160,8 +174,13 @@
             <aside class="notes">Interfaces between these are very well defined</aside>
         </section>
         <section>
+            <h2>With Marionette</h2>
+            <img height=500 src="./lib/marionette-architecture.png">
+        </section>
+        <section>
             <h2>These interfaces are very decoupled</h2>
-            <img height=500 src="http://williambrownstreet.net/work/backbonejs.slides/codemirror/introduction/images/mvc-backbone.png">
+            <img height=450 src="lib/backbone-chart.png">
+            <small>http://williambrownstreet.net/work/backbonejs.slides/codemirror/introduction/images/mvc-backbone.png</small>
         </section>
         <section>
             <h2>Decoupled interfaces are replaceable</h2>
@@ -212,8 +231,8 @@ return MyView;
             <div class="fragment">
                 <p>Polymer / WebComponents</p>
                 <div class="flex">
-                    <img height=200 src="https://blog.polymer-project.org/images/logos/p-logo.png">
-                    <img height=200 src="http://webcomponents.org/img/logo.svg"
+                    <img height=200 src="lib/polymer-icon.png">
+                    <img height=200 src="lib/webcomponents-icon.svg">
                 </div>
             </div>
         </section>
@@ -265,6 +284,7 @@ Backbone.View.extend({
               <pre><code class="html" data-trim>
 <time is="relative-time" datetime="{{isoDate}}">{{model.modifyDt}}</time>
             </code></pre>
+            <img src="lib/time-element.png">
         </section>
         <section>
             <h2>Back to our chart</h2>
@@ -274,7 +294,8 @@ Backbone.View.extend({
         <section>
             <h2>Backbone.Model</h2>
 
-            <img height=500 src="http://williambrownstreet.net/work/backbonejs.slides/codemirror/introduction/images/mvc-backbone.png">
+            <img height=500 src="lib/backbone-chart.png">
+            <small>http://williambrownstreet.net/work/backbonejs.slides/codemirror/introduction/images/mvc-backbone.png</small>
             <aside class="notes">Again, note well defined interfaces</aside>
         </section>
         <section>
@@ -319,7 +340,7 @@ this.model.foo = myValue;
             <h2>One solution</h2>
             <div class="fragment">
                 <h3>Ampersand.js</h3>
-                <img src="https://raw.githubusercontent.com/AmpersandJS/ampersandjs.com/gh-pages/public/images/logo-ampersand.png">
+                <img src="lib/ampersand-logo.png">
         </section>
         <section>
             <h2>Ampersand.js</h2>
@@ -358,7 +379,8 @@ this.model.foo = myValue;
         </section>
         <section>
             <h2>React</h2>
-            <img height=400 src="http://developerlight.com/wp-content/uploads/2014/08/react.png">
+            <img height=400 src="lib/react-icon.png">
+
             <aside class="notes">New kid on the block\npromises to be fast</aside>
         </section>
         <section>
@@ -411,15 +433,19 @@ new MyView().render();
         <section>
             <h2>But do we really want this?</h2>
             <div style="display:flex;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Frankenstein%27s_monster_%28Boris_Karloff%29.jpg/340px-Frankenstein%27s_monster_%28Boris_Karloff%29.jpg">
-                <img src="lib/react-architecture.png">
+                <img src="lib/frankenstein.jpg">
+                <img src="lib/frankenstein-architecture.png">
             </div>
+            <small>https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Frankenstein%27s_monster_%28Boris_Karloff%29.jpg/340px-Frankenstein%27s_monster_%28Boris_Karloff%29.jpg -O lib/frankenstein.jpg</small>
         </section>
         <section>
             <h2>Probably not</h2>
             <p class="fragment">As always, it depends</p>
             <p class="fragment">What we don't want</p>
-            <img height=400 class="fragment" src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-ohh-look-squirrel.png">
+            <div class="fragment">
+                <img height=400 src="lib/squirrel.png">
+                <small>http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-ohh-look-squirrel.png</small>
+            </div>
             <aside class="notes">We don't want to go off chasing every new framework like a squirrel</aside>
         </section>
         <section>
@@ -430,11 +456,12 @@ new MyView().render();
         <section>
             <h2>Our approach</h2>
             <ol>
-                <li>Survey what is out there</li>
-                <li>Test to make sure it works in your system</li>
-                <li>Start small, find out the pain points</li>
-                <li>Favor refactoring / upgrading when you 'touch' old code</li>
-                <li>Rinse and repeat</li>
+                <li class="fragment">Survey what is out there</li>
+                <li class="fragment">Test to make sure it works in your system</li>
+                <li class="fragment">Start small, find out the pain points</li>
+                <li class="fragment">Favor refactoring / upgrading when you 'touch' old code</li>
+                <li class="fragment">Your tests can help you a lot</li>
+                <li class="fragment">Rinse and repeat</li>
             </ol>
         </section>
         <section>
@@ -442,7 +469,18 @@ new MyView().render();
             <img src="lib/aviture-architecture.png">
         </section>
         <section>
-            <h2>What you choose should be best for your company / application</h2>
+            <h2>Benefits</h2>
+            <p>This approach is valid almost anywhere on any project</p>
+            <ul>
+                <li class="fragment">Keeping up to date</li>
+                <li class="fragment">Happy Managers</li>
+                <li class="fragment">Happy Developers</li>
+                <li class="fragment">Fighting Entropy</li>
+            </ul>
+        </section>
+        <section>
+
+            <p>What you choose should be best for your company / application</p>
 
         </section>
         <section>
