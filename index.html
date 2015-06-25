@@ -76,6 +76,7 @@
             <ul>
                 <li class="fragment">Began new project</li>
                 <li class="fragment">Mapping application</li>
+                <li class="fragment">Backbone, Angular, Ember</li>
                 <li class="fragment">Angular seemed magical</li>
                 <li class="fragment">Ember was all or nothing</li>
             </ul>
@@ -84,8 +85,7 @@
             <h2>Let's go way back</h2>
             <p class="fragment">2012</p>
             <img class="fragment" src="lib/trends-2012.png">
-            <aside class="notes">Talk about our tradeoffs, angular and ember and backbone were our choices basically, and still around today
-            but we picked flexibility over the 'magic' of angular and the 'ember' way</aside>
+            <aside class="notes"></aside>
         </section>
         <section>
             <h2>Fast forward</h2>
@@ -94,9 +94,9 @@
             but we see its popularity everywhere so its not just a fluke.</aside>
         </section>
         <section>
-            <h2>The rise of React</h2>
+            <h2>Is React the next big thing?</h2>
             <img src="lib/trends-current-react-3.png">
-            <aside class="notes">There are 2 talks on React, 3 on angular, 1 on backbone (mine)</aside>
+            <aside class="notes">There are 2 talks on React, 3 on angular, 1 on backbone (mine).  Or is it something else?</aside>
         </section>
         <section>
             <h2>The others</h2>
@@ -114,15 +114,13 @@
                 <img src="lib/polymer-icon.png">
                 <img src="lib/todo-mvc.png">
             </div >
-            <aside class="notes">Show current graph, with caveats of it not being the end all be all.  Maybe Angular is just so complex it has a lot of people searching for it
-            but we see its popularity everywhere so its not just a fluke.  </aside>
+            <aside class="notes">Doesn't even include Meteor (2 talks) or Aurelia, Mithril</aside>
         </section>
         
         <section>
             <h2>Meanwhile</h2>
             <p>Not much happening with Backbone itself</p>
             <p>No real roadmap</p>
-            <aside class="notes">In many ways Marionette has taken the lead for backbone development</aside>
         </section>
         <section>
             <h2>Have we been left behind??</h2>
@@ -167,6 +165,7 @@
                 <h2>Marionette</h2>
                 <img src="lib/marionette.png">
                 <aside class="notes">
+                Marionette has really taken lead for Backbone development
                 Other items Marionette gives you, communication mechanisms, behaviors, etc.  
                 Note that models don't really change with marionette</aside>
             </section>
@@ -288,7 +287,7 @@ Backbone.View.extend({
         <section>
             <h2>How we're using them today</h2>
             <p>Using just Custom Elements</p>
-            <p>Best example is Github's <a href="https://github.com/mmacaula/reveal.js">custom </a>'time' element</p>
+            <p>Best example is Github's <a href="https://github.com/mmacaula/reveal.js/tree/reinvigorate-backbone">custom </a>'time' element</p>
               <pre><code class="html" data-trim>
 <time is="relative-time" datetime="{{isoDate}}">{{model.modifyDt}}</time>
             </code></pre>
