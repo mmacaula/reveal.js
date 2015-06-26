@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Navigating the Promised Land, Promises in Javascript</title>
+
+		<meta name="description" content="A talk on promises in javascript">
+		<meta name="author" content="Mike Macaulay">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/q/q.js"></script>
+        <script src="node_modules/lodash/index.js"></script>
+
+        <style>
+            button {
+                height : 50px;
+                width : 200px;
+            }
+            .block img{
+                margin : 0 !important;
+            }
+            .block {
+                position: absolute;
+                background-color: darkgrey;
+                left: 50px;
+                width: 90px;
+                height: 90px;
+                margin: 5px;
+                top : 0px;
+                bottom : 0px;
+            }
+        </style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Navigating the Promised Land</h1>
+					<p>Promises in Javascript</p>
+					<p>
+						<small>Created by <a href="http://github.com/mmacaula">Mike Macaulay</a> / <a href="http://twitter.com/mmacaula">@mmacaula</a></small>
+					</p>
+				</section>
+                <section>
+                    <img class="stretch" src="lib/kcdc_sponsors.png">
+                </section>
+
+				<section>
+                    <section>
+
+                        <h2>Who Am I?</h2>
+                        <ul>
+                            <li>Java for about 8 years out of college</li>
+                            <li>Moved to Omaha 3 years ago</li>
+                            <li>Web / Javascript developer ever since</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Who I work for</h2>
+                        <img src="lib/aviture-logo.png">
+                    </section>
+				</section>
+                <section>
+                    <h2>Agenda</h2>
+                    <ul>
+                        <li>Why do I care?</li>
+                        <li>Introduction to promises</li>
+                        <li>Why they're useful</li>
+                        <li>How you can use them</li>
+                        <li>Advanced uses</li>
+                        <li>Potential pitfalls</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Best demonstrated with an example</h2>
+                    <p>using jQuery animate()</p>
+                    <p>Contrived, but will demonstrate concepts</p>
+
+                </section>
+                <section>
+                    <h2>Animation</h2>
+                    <ol>
+                        <li>Go down</li>
+                        <li>Go up and right</li>
+                        <li>Go translucent and wide</li>
+                        <li>Go back</li>
+                    </ol>
+                    <button id="example-done">Run Example</button>
+                    <div class="block">
+
+                    </div>
+                </section>
+                <section>
+                    <section>
+                        <h2>Without promises</h2>
+                    </section>
+
+                    <section>
+                        <h2>Let's go down then up</h2>
+                        <pre class=""><code data-trim>
+// API Reference
+// element.animate(options, duration, callback);
+$(element).animate({
+    top : '+=50px'
+}, 1000, function() {
+    $(element).animate({
+        top: '-=50px'
+    }, 1000);
+});
+                            </code></pre>
+                        <div class="block"></div>
+                        <button id="example1">Run</button>
+                    </section>
+                    <section>
+                        <h2>If we keep going...</h2>
+                        <pre><code data-trim>
+   $(element).animate({
+        top : '+=50px'
+    }, 1000, function() {
+        $(element).animate({
+            top: '-=50px',
+            left : '+=50px'
+        }, 1000, function(){
+            $(element).animate({
+                width : '+=50px',
+                opacity : 0.5
+            }, 1000, function(){
+                $(element).animate({
+                    opacity : 1.0,
+                    left : '-50px',
+                    width : '-=50px'
+                })
+            })
+        });
+    });
+                            </code></pre>
+                        <div class="block"></div>
+                        <button id="example2">Run</button>
+                        <h3 class="fragment">This is called "Pyramid of Doom"</h3>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Let's refactor</h2>
+                        <h4>(Still without promises)</h4>
+                        <p class="fragment">I think we'll find we're still forced into some unwise decisions</p>
+
+                    </section>
+                    <section>
+                        <h4>Let's declare our functions beforehand</h4>
+                    <pre><code data-trim>
+var leftFull = function() {
+    $(element).animate({
+        opacity: 1.0,
+        left: '-50px',
+        width: '-=50px'
+    }, 1000)
+};
+var wideSeeThrough = function() {
+    $(element).animate({
+        width: '+=50px',
+        opacity: 0.5
+    }, 1000, leftFull)
+};
+var upRight = function() {
+    $(element).animate({
+        top: '-=50px',
+        left: '+=50px'
+    }, 1000, wideSeeThrough);
+};
+var goDown = function() {
+    $(element).animate({
+        top : '+=50px'
+    }, 1000, upRight);
+};
+goDown();
+                    </code></pre>
+                        <h4>Hardly better.  We've flattened the pyramid but made harder to read</h4>
+                    </section>
+                    <section>
+                        <h4>Let's keep trying (using callbacks)</h4>
+                        <pre><code data-trim>
+var leftFull = function() {
+    $(element).animate({
+        opacity: 1.0,
+        left: '-50px',
+        width: '-=50px'
+    }, 1000)
+};
+var wideSeeThrough = function(cb) {
+    $(element).animate({
+        width: '+=50px',
+        opacity: 0.5
+    }, 1000, cb)
+};
+var upRight = function(cb) {
+    $(element).animate({
+        top: '-=50px',
+        left: '+=50px'
+    }, 1000, cb);
+};
+var goDown = function(cb) {
+    $(element).animate({
+        top : '+=50px'
+    }, 1000, cb);
+};
+goDown(upRight(wideSeeThrough(leftFull)));
+                            </code></pre>
+                        <div class="block"></div>
+                        <button id="example3">Run</button>
+                        <h4 class="fragment">oops... </h4>
+                        <h4 class="fragment">this is called "callback hell"</h4>
+                    </section>
+                    <section>
+                        <h4>Functional programming to the rescue (using lodash partials)</h4>
+                        
+                        <pre><code>
+var leftFull = // function def
+var wideSeeThrough = // function def
+var upRight =// function def
+var goDown = // function def
+goDown(_.partial(upRight, _.partial(wideSeeThrough,leftFull)));
+                        </code></pre>
+                        <div class="block"></div>
+                        <button id="example4">Run</button>
+                        <h4 class="fragment">This works, but</h4>
+                    </section>
+                    
+                </section>
+                <section>
+                   <h2>Ughh</h2>
+                    <p>that's some ugly code..</p>
+                    <ul>
+                        <li class="fragment">We've got code declared before it's used</li>
+                        <li class="fragment">Had to resort to advanced functional programming to even get it to work</li>
+                        <li class="fragment">What if we had to worry about errors (say we're making AJAX requests?)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>THEN()</h1><h2> there were Promises!</h2>
+                    <h3>har har har</h3>
+                </section>
+                <section>
+                    <h2>Promises</h2>
+                    <blockquote cite="https://github.com/kriskowal/q"> A promise is an object that represents the return value or the thrown exception that the function may eventually provide.</blockquote>
+                    <small>Q.js docs</small>
+                </section>
+                <section>
+                    <h2>The middle</h2>
+                    <p>the heart of all promises is the `then` function</p>
+                    <ul class="fragment">
+                        <li>This receives two arguments</li>
+                        <li>A function to be called on success (resolve)</li>
+                        <li>A function to be called on error (reject)</li>
+                    </ul>
+                </section>
+                <section>
+                    <section>
+                        <h2>Example</h2>
+                        <p>Let's go back to our example</p>
+                        <pre><code>
+var leftFull = // function def
+var wideSeeThrough = // function def
+var upRight =// function def
+var goDown = // function def
+
+return goDown(element)
+.then(function(){
+    return upRight(element);
+})
+.then(function(){
+    return wideSeeThrough(element);
+})
+.then(function(){
+    return leftFull(element)
+});
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h2>So how do we get there?</h2>
+                </section>
+                <section>
+                    <section>
+                        <h2>Step 1: Research libraries</h2>
+                        <ul class="fragment">
+                            <li>Deferred.js</li>
+                            <li>Q.js</li>
+                            <li>task.js</li>
+                            <li>when.js</li>
+                            <li>RSVP.js</li>
+                            <li>jQuery deferred</li>
+                            <li>much much more!</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Hmmm</h2>
+                        <img src="lib/standards.png">
+                    </section>
+                    <section>
+                        <h2>Just kidding</h2>
+                        <h3>There are really just three (kind of)</h3>
+                        <ul>
+                            <li class="fragment">Promises A+</li>
+                            <li class="fragment">Native browser support!</li>
+                            <li class="fragment">jQuery's deferreds  - <span class="fragment">Avoid them!</span></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Making a promise</h2>
+                        <h4>Let's convert our animate call into a promise</h4>
+                        <p> I'll be using native javascript promises for now</p>
+                        <pre><code>
+// old code:
+function goDown(element, callback){
+    element.animate({
+        top : '+=50px'
+    }, 1000, callback);
+}
+// new code
+function goDown(element){
+    return new Promise(function(resolve){
+        element.animate({
+            top : '+=50px'
+            }, 1000, resolve);
+    });
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Now let's chain it together</h2>
+                        <pre><code>
+function goDown(element){
+// rest of go down
+}
+function upRight(element){
+    return new Promise(function(resolve){
+        element.animate({
+            top: '-=50px',
+            left : '+=50px'
+        }, 1000, resolve);
+    });
+goDown(element)
+.then(function(){
+    return upRight(element);
+});
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>and so on and so forth</h2>
+                        <p>get's us to this: </p>
+                                                <pre><code>
+var leftFull = // function def
+var wideSeeThrough = // function def
+var upRight =// function def
+var goDown = // function def
+
+return goDown(element)
+.then(function(){
+    return upRight(element);
+})
+.then(function(){
+    return wideSeeThrough(element);
+})
+.then(function(){
+    return leftFull(element)
+});
+                        </code></pre>
+
+                    </section>
+                    <section>
+                        <h2>Still a little unwieldy</h2>
+                        <ul class="fragment">
+                            <li>We're using closures here (element)</li>
+                            <li>All those anonymous functions bother me</li>
+                        </ul>
+                    </section>
+
+                </section>
+                <section>
+                    <h2>Promises can also return values </h2>
+                    <p>Simply call the 'resolve' function with a value</p>
+                    <pre class="fragment"><code>
+ // new code
+function goDown(element){
+    return new Promise(function(resolve){
+        element.animate({
+            top : '+=50px'
+            }, 1000, resolve);
+    });
+}
+// newer code
+function goDown(element){
+    return new Promise(function(resolve){
+        element.animate({
+            top : '+=50px'
+            }, 1000, function(){
+               resolve(element);
+            });
+    });
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>So then we can do</h2>
+                    <pre><code>
+var upRight =// function def
+var goDown = // function def
+// equivalent!
+
+goDown(element)
+.then(function(element){
+    return upRight(element);
+});
+
+goDown(element)
+.then(upRight);
+                        </code></pre>
+                </section>
+                <section>
+                    <section>
+                        <h3>Update all our functions to use chaining and we can get to</h3>
+                            <pre><code>
+var leftFull = // function def
+var wideSeeThrough = // function def
+var upRight =// function def
+var goDown = // function def
+
+goDown(element)
+.then(upRight)
+.then(wideSeeThrough)
+.then(leftFull);
+                            </code></pre>
+                    </section>
+
+                    </section>
+                <section>
+                    <h2>Pretty cool... </h2>
+                    <h2 class="fragment">is that it?</h2>
+
+                </section>
+                <section>
+                    <h2>Actually no</h2>
+                    <p>Promises really start to shine when you use them as a control library</p>
+
+                </section>
+                <section>
+                    <h2>Let's complicate our example</h2>
+                    <p>New requirement</p>
+                    <ul>
+                        <li>Query github for a user</li>
+                        <li>Then place user gravatar inside our box</li>
+                        <li>User feedback states that this must occur inbetween step 2 and 3</li>
+                        <li>May not fetch image beforehand</li>
+                    </ul>
+
+                </section>
+                <section>
+                    <section>
+                        <h2>How might this work?</h2>
+                        <p>first we need to grab some json</p>
+                        <pre><code>
+function fetch(url){
+    var jqueryDeferred = $.getJSON(url);
+    return Promise.resolve(jqueryDeferred);  // wrap jquery promises!
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>some glue code</h2>
+<pre><code>function fetchUser(user){
+    return fetch('https://api.github.com/users/'+user)
+}
+var submitAndRender = function() {
+    var button = this;
+    var input = findInput(this);
+    fetchUser(input.value)
+        .then(function(json) {
+            findOutput(button)[0].innerHTML = JSON.stringify(json, undefined, 2);
+        });
+
+};
+$('#example5').click(submitAndRender);
+$('#input5').keypress(function(e) {
+    if(e.which == 13) {
+        submitAndRender.call(this);
+    }
+});
+</code></pre>
+                    </section>
+                    <section>
+                        <h2>Next</h2>
+                        <p>now let's see some example json</p>
+                        <input id="input5" type="text">
+                        <button id="example5">Fetch</button>
+                        <div><small class="output"> </small></div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <pre><code>function renderImageNaive(el, json){
+    $(el).html('<img src="'+json.avatar_url+'">');
+    return el;
+}
+var block = findBlock(this);
+var input = findInput(this);
+return animateDown(block)
+    .then(animateUpRight)
+    .then(function(el) {
+        return fetchUser(input.value)
+            .then(function(json) {
+                return renderImageNaive(el, json);
+            });
+    })
+    .then(animateWideHalf)
+    .then(leftFull);
+});</code></pre>
+                        <div class="block" style="top:-60px"></div>
+                        <button id="example6">Run</button>
+                        <input id="input6" type="text">
+                    </section>
+                    <section>
+                        <h2>Image loading... </h2>
+                        <p> As a promise!</p>
+                        <pre><code>function renderImage(el, json){
+return new Promise(function(resolve, reject){
+    var image = new Image();
+    image.onload = function(){
+        resolve(el);
+    };
+    image.onerror = function(){
+        reject(el);
+    }
+    image.src =json.avatar_url;
+    $(el).html(image);
+});                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>More control</h2>
+                        <p>Users relent (a little)</p>
+                        <p>How might we do this?</p>
+                    </section>
+                    <section>
+                        <h2>Promises as control flow</h2>
+                      <pre><code>var fetchUserPromise;  // declare it up front
+return animateDown(block)
+    .then(function(element){
+        fetchUserPromise = fetchUser(input.value); // kick this off
+        return element; // remember to keep the chain going
+    })
+    .then(animateUpRight)
+    .then(function(el) {
+        return fetchUserPromise
+            .then(function(json) {
+                return renderImage(el, json);
+            }).catch(handleError(el));
+    })
+    .then(animateWideHalf)  // and so on
+</code></pre>
+                        <div class="block" style="top:-60px"></div>
+                        <button id="example8">Run</button>
+                        <input id="input8" type="text">
+                    </section>
+                    <section>
+                        <h2>Introducing Promise.All()</h2>
+                      <pre><code>var fetchUserPromise;  // declare it up front
+return animateDown(block)
+    .then(function(element){
+        fetchUserPromise = fetchUser(input.value); // kick this off
+        return element; // remember to keep the chain going
+    })
+    .then(function(el){
+        return Promise.all([animateUpRight(el),fetchUserPromise]);
+    })
+    .then(function(results) {
+        var el = results[0],
+            json = results[1];
+            return renderImage(el, json)
+                .catch(handleError(el));
+    })
+    .then(animateWideHalf)  // and so on
+</code></pre>
+                        <div class="block" style="top:-60px"></div>
+                        <button id="example9">Run</button>
+                        <input id="input9" type="text">
+                    </section>
+
+                </section>
+                <section>
+                    <h2>Error Handling</h2>
+                    <p>Promises can't be broken</p>
+                    <blockquote class="fragment">Read my lips:  No new taxes!</blockquote>
+                    <p class="fragment">or</p>
+                    <blockquote class="fragment">If you like your health care plan, you can keep it!</blockquote>
+                    <p class="fragment">But they can be rejected.</p>
+
+                </section>
+                <section>
+                    <h2>Handling rejection</h2>
+                    <h3>Two ways</h3>
+                    <pre><code>
+return animateDown(block)
+    .then(animateUpRight)
+    .then(function(el) {
+        return fetchUser(input.value)  // this can be rejected!
+            .then(function(json) {
+                return renderImage(el, json);
+            }, function(error){
+                $(el).html('x');
+                return el;  // continue the chain
+            );
+    })
+    .then(animateWideHalf)
+    .then(leftFull)
+    .catch(function(err){
+       //  handle error here
+    }
+                    </code></pre>
+                    <div class="block" style="top:-20px"></div>
+                    <button id="example7">Run</button>
+                    <input id="input7" type="text">
+                </section>
+                <section>
+                    <section>
+                        <h2>Potential Pitfalls</h2>
+                        <p>Error handling</p>
+                        <pre><code>
+return fetchUser(input.value)  // this can be rejected!
+    .then(function(json) {
+        return renderImage(el, json);
+    }, function(error){
+        $(el).html('x');
+        return el;  // continue the chain
+    );
+
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Potential Pitfalls</h2>
+                        <p>Catching errors from renderImage</p>
+                        <pre><code>
+return fetchUser(input.value)  // this can be rejected!
+    .then(function(json) {
+        return renderImage(el, json);
+    }, function(error){
+        $(el).html('x');
+        return el;  // continue the chain
+    ).then(undefined, function(error){
+        // called when/if renderImage fails
+    });
+
+                        </code></pre>
+                    </section>
+                     <section>
+                        <h2>Potential Pitfalls</h2>
+                        <p>Using .catch()</p>
+                        <pre><code>
+return fetchUser(input.value)  // this can be rejected!
+    .then(function(json) {
+        return renderImage(el, json);
+    }, function(error){
+        $(el).html('x');
+        return el;  // continue the chain
+    ).catch(function(error){
+        // called when/if renderImage fails
+    });
+
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h2>Potential Pitfalls</h2>
+                    <p>Once you're in the promised land, try to stay there.</p>
+                </section>
+                <section>
+                    <section>
+                        <h2>Errors can be swallowed</h2>
+                        <p>This is a feature!</p>
+                        <p class="fragment">But usually one that catches one by surprise</p>
+                    </section>
+                    <section>
+                        <h2>Example</h2>
+                          <pre><code>
+return fetchUser(input.value)  // this can be rejected!
+    .then(function(json) {
+        return renderImage(el, json);
+    })
+.then(animateWideHalf);
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h2>Potential Pitfalls</h2>
+                    <p>You can get lost in the promised land</p>
+                    <p class="fragment">Especially if using a library like Q</p>
+                    <pre class="fragment"><code>
+function animate(el, options){
+    var deferred = Q.defer();
+    $(el).animate(options, {  ///  if this line throws an exception
+        queue: false,
+        duration: duration,
+        complete: function() {
+            deferred.resolve(el);
+        }
+    });
+    return deferred.promise;
+}
+                        </code></pre>
+                </section>
+                <section>
+                    <h2>Potential Pitfalls</h2>
+                    <p>Stack traces can disappear</p>
+                    <p class="fragment">Consequence of the async nature of promises</p>
+                    <div class="block" style="top:-20px"></div>
+                    <button id="example8">Run</button>
+                </section>
+                <section>
+                    <h2>Conclusion</h2>
+                    <p>I hope I've given you a good understanding of promises</p>
+                    <p class="fragment">And why they are really powerful</p>
+                    <p class="fragment">What's next?  Generators </p>
+                </section>
+                <section>
+                    <h2>Questions?</h2>
+                </section>
+                <section>
+                    <h2>Thanks!!</h2>
+
+                </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+        <script src="js/animate.js"></script>
+
+	</body>
+</html>
