@@ -20,6 +20,16 @@
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-65005459-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
     <!-- Printing and PDF exports -->
     <script>
         var link = document.createElement('link');
@@ -108,7 +118,7 @@
         <section>
             <h2>The others</h2>
             <div style="display:flex; flex-wrap:wrap; justify-content:center; height : 200px;">
-                <img src="lib/angular-icon.png"> 
+                <img src="lib/angular-icon.png">
                 <img src="lib/react-icon.png">
                 <img src="lib/ember-icon.png" >
                 <img src="lib/polymer-icon.png">
@@ -116,7 +126,7 @@
             </div >
             <aside class="notes">Doesn't even include Meteor (2 talks) or Aurelia, Mithril</aside>
         </section>
-        
+
         <section>
             <h2>Meanwhile</h2>
             <p>Not much happening with Backbone itself</p>
@@ -166,15 +176,15 @@
                 <img src="lib/marionette.png">
                 <aside class="notes">
                 Marionette has really taken lead for Backbone development
-                Other items Marionette gives you, communication mechanisms, behaviors, etc.  
+                Other items Marionette gives you, communication mechanisms, behaviors, etc.
                 Note that models don't really change with marionette</aside>
             </section>
-        </section>    
+        </section>
         <section>
             <h2>Fundamentals</h2>
             <p>Backbone follows a MVC-like pattern</p>
             <p>And follows it fairly well</p>
-        </section>    
+        </section>
         <section>
             <h2>Amount of code in a typical Backbone Application</h2>
             <img height=500 src="./lib/backbone-code.png">
@@ -197,17 +207,17 @@
         <section>
             <h2>How we did it</h2>
             <pre><code class="js" data-trim>
-var ich = require('icanhaz');            
+var ich = require('icanhaz');
 var templateText = require('text!assets/templates/myTemplate.html');
 ich.addTemplate('myTemplate', templateText);
 
 MyView =  Backbone.View.extend({
 
     render : function(){
-       this.$el.html(ich.myTemplate(this.model.toJSON())); 
+       this.$el.html(ich.myTemplate(this.model.toJSON()));
     }
 });
-return MyView;      
+return MyView;
             </code></pre>
             <p class="fragment">AMD, Loading and compiling template are details</p>
             <aside class="notes">Let's look at the 'interfaces' AMD, Load text and compile on the client are all specifics</aside>
@@ -222,8 +232,8 @@ MyView =  Backbone.View.extend({
        this.$el.html(myTemplateFunc(this.model.toJSON()));
     }
 });
-return MyView;      
-            </code></pre>  
+return MyView;
+            </code></pre>
             <p class="fragment">This is actually what we did</p>
             <p class="fragment">myTemplateFunc is actually a handlebars compiled function</p>
         </section>
@@ -317,12 +327,12 @@ Backbone.View.extend({
             <h2>My issue with Backbone.Model</h2>
             <p class="fragment">`get` and `set` to change my data</p>
             <pre><code class="fragment js" data-trim>
-this.model.set('foo', myValue); 
+this.model.set('foo', myValue);
 
 // this would be much nicer
 this.model.foo = myValue;
 </code></pre>
-        </section>  
+        </section>
         <section>
             <h2>This is an issue</h2>
             <p>almost every framework or library out there deals with POJOS</p>
@@ -339,7 +349,7 @@ this.model.foo = myValue;
          <pre><code class="fragment js" data-trim>
          var modelRepresentation = this.model.toJSON();
 // pass modelRepresentation to other libs
-         </code></pre> 
+         </code></pre>
          <p class="fragment">But we lose our awesome eventing</p>
          <p class="fragment">Especially if these libraries mutate our data</p>
         </section>
