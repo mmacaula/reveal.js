@@ -45,7 +45,7 @@
             <h3>Using them today</h3>
             <p>
                 <small>Created by <a href="http://michaelmac.org">Mike Macaulay</a> /
-                    <a href="http://twitter.com/mmacauls">@mmacaula</a></small>
+                    <a href="http://twitter.com/mmacaula">@mmacaula</a></small>
             </p>
         </section>
         <section>
@@ -74,12 +74,129 @@
         </section>
         <section>
             <h2>Custom Elements</h2>
+            <p>First need to understand what Web Components are</p>
 
         </section>
         <section>
-            <section>
-                <h2></h2>
-            </section>
+            <h2>Web Components is a general term</h2>
+            <p>Actually 4 different specs</p>
+            <ul>
+                <li>Custom Elements</li>
+                <li>Templates</li>
+                <li>Shadow DOM</li>
+                <li>HTML Imports</li>
+            </ul>
+            <p class="fragment">We'll be focusing on Custom Elements</p>
+        </section>
+        <section>
+            <h2>Custom Elements</h2>
+            <pre><code class="html" data-trim>
+                <my-custom-element></my-custom-element>
+            </code></pre>
+        </section>
+        <section>
+            <h2>Custom Elements</h2>
+            <p>Nothing new</p>
+            <p class="fragment">Fun Fact:  Microsoft introduced custom elements back in IE 5.5</p>
+            <p class="fragment">Fun Fact 2: Microsoft officially abandoned support for them in IE 10</p>
+        </section>
+        <section>
+            <h2>Nothing new?</h2>
+            <p>Developers haven't really been waiting</p>
+            <p class="fragment">Custom elements in various forms are all around us</p>
+        </section>
+        <section>
+        <h2>Already Existing Custom Elements</h2>
+        <!-- TODO Examples on using each of them -->
+            <ul>
+                <li>Angular Directives</li>
+                <li>Ember Components</li>
+                <li>React Components</li>
+                <li>Riot JS</li>
+            </ul>
+            <p class="fragment">All these have a custom element of some form or another</p>
+            <aside class="notes">They also all have different mechanisms for their components, none do shadow dom</aside>
+        </section>
+        <section>
+            <h2>But they all have one big problem</h2>
+            <p class="fragment">Reusability</p>
+            <p class="fragment">Specifically between frameworks</p>
+
+        </section>
+        <section>
+            <h2>Web Components</h2>
+            <p>To the rescue!</p>
+            <p class="fragment">Sounds great, a standard, reusable way of writing components that works across browsers</p>
+            <p class="fragment">Regardless of libraries / frameworks!</p>
+            <!-- sign me up! -->
+        </section>
+        <section>
+            <h2>But...</h2>
+            <img src="./lib/wc-compliance.png">
+        </section>
+        <section>
+            <h2>Why?</h2>
+            <p>It's been years since these were announced</p>
+            <p class="fragment">The specs are out there, why aren't the browsers implementing them?</p>
+        </section>
+        <section>
+            <h2>Not Invented Here?</h2>
+            <p>Google has been primary pusher of web components</p>
+            <p class="fragment">Perhaps too primary</p>
+        </section>
+        <section>
+            <h2>Problems with Web Components today</h2>
+            <p class="fragment">We've got a set of polyfills out there (Polymer)</p>
+            <p class="fragment">Still, widely considered "not ready" for production</p>
+            <p class="fragment">Why not?</p>
+        </section>
+        <section>
+            <h2>Size and Complexity of the polyfills</h2>
+            <p>Particularly with Shadow DOM</p>
+            <aside class="notes">If time allows, talk about what shadow dom is and the herculean effort to introduce this concept to keep styles only within their scoped element</aside>
+        </section>
+        <section>
+            <h2>But the good news!</h2>
+            <p>The others are much easier to polyfill and have work for almost all browsers</p>
+        </section>
+        <section>
+            <h2>Custom Elements</h2>
+            <p>Do Custom Elements have an appropriate polyfill?</p>
+            <aside class="notes">Which brings me back to custom elements, the point of the talk!  </aside>
+        </section>
+        <section>
+            <h2>Yup</h2>
+            <p>You have two choices</p>
+            <ol>
+                <li>Webcomponents.org</li>
+                <li>Document-Register-Element</li>
+            </ol>
+        </section>
+        <section>
+            <h2>Comparison</h2>
+            <table>
+                <thead><tr>
+                    <th>Polyfill</th>
+                    <th>Size (min and gzipped)</th>
+                    <th>Compatibility</th>
+                </tr></thead>
+                <tbody>
+                    <tr>
+                        <th>Webcomponents.js</th>
+                        <th>5.1KB</th>
+                        <th>IE10+, Current Browsers, </th>
+                    </tr>
+                    <tr>
+                        <th>Document-Register-Element</th>
+                        <th>3KB</th>
+                        <th>IE8+, Safari, tons of mobile browsers</th>
+                    </tr>
+                </tbody>
+            </table>
+            <aside class="notes">Webcomponents contains polyfills for a weakmap as well</aside>
+        </section>
+
+
      </div>
 
 </div>
