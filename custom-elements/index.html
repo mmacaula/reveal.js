@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Custom Elements</title>
+
+    <meta name="description">
+    <meta name="author" content="Mike Macaulay">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/dropdown.css">
+    <link rel="stylesheet" href="css/transition.css">
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/transition.js"></script>
+    <script src="js/CustomElements.js"></script>
+    <script src="js/time-elements.js"></script>
+    <script>
+
+      var proto = Object.create(HTMLElement.prototype);
+
+      proto.attachedCallback = function(){
+        var $el = $(this);
+        $el.addClass('ui dropdown');
+        $(this).dropdown();
+      };
+      proto.createdCallback = function(){
+      };
+
+      proto.toggle= function(){
+        $(this).dropdown('toggle');
+      };
+
+      document.registerElement('semantic-dropdown', {
+        prototype: proto
+      });
+    </script>
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <h2>Custom Elements</h2>
+            <h3>Using them today</h3>
+            <p>
+                <small>Created by <a href="http://michaelmac.org">Mike Macaulay</a> /
+                    <a href="http://twitter.com/mmacaula">@mmacaula</a></small>
+            </p>
+        </section>
+        <section>
+            <section>
+
+                <h2>Who Am I?</h2>
+                <ul>
+                    <li>Java for about 8 years out in Denver</li>
+                    <li>Moved to Omaha 3 years ago</li>
+                    <li>Web / Javascript developer ever since</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Who I work for</h2>
+                <img src="lib/aviture-logo.png">
+            </section>
+        </section>
+        <section>
+            <h2>Agenda</h2>
+            <ul>
+                <li>What are custom elements?</li>
+                <li>Some examples on using them</li>
+                <li>Can we really use them today?</li>
+            </ul>
+
+        </section>
+        <section>
+            <h2>Custom Elements</h2>
+            <p>First need to understand what Web Components are</p>
+
+        </section>
+        <section>
+            <h2>Web Components</h2>
+            <p>Actually 4 different specs</p>
+            <ul>
+                <li>Custom Elements</li>
+                <li>Templates</li>
+                <li>Shadow DOM</li>
+                <li>HTML Imports</li>
+            </ul>
+            <p class="fragment">We'll be focusing on Custom Elements</p>
+        </section>
+        <section>
+            <h2>Custom Elements</h2>
+            <pre><code class="html" data-trim>
+                <my-custom-element></my-custom-element>
+            </code></pre>
+        </section>
+        <section>
+            <h2>Let's get to the good stuff</h2>
+            <p>What can just Custom Elements do anyway?</p>
+        </section>
+        <section>
+            <h2>Allow you to</h2>
+            <ul>
+                 <li>Add behavior to elements</li>
+                 <li>Reuse across frameworks</li>
+                 <li>Increase readability</li>
+             </ul>
+        </section>
+        <section>
+            <p>Let's find out how to create and use them</p>
+        </section>
+        <section>
+            <h2>Creating Custom Elements</h2>
+            <ol>
+                <li>Shim</li>
+                <li>Register </li>
+                <li>Use </li>
+            </ol>
+        </section>
+        <section>
+            <h2>Shim</h2>
+            <pre><code class="js" data-trim>
+                <script src="path/to/webcomponents.js/CustomElements.min"></script>
+            </code></pre>
+        </section>
+        <section>
+            <h2>Register</h2>
+            <pre><code class="js" data-trim>
+var proto = Object.create(HTMLElement.prototype);
+
+proto.attachedCallback = function() {
+    console.log("I have been attached to the DOM: ", this);
+};
+
+document.registerElement('my-element', {
+  prototype: proto
+});
+            </code></pre>
+            <aside class="notes">I'm using the webcomponents.js polyfill here</aside>
+        </section>
+        <section>
+            <h2>Use</h2>
+            <pre><code class="js" data-trim>
+$('body').append('<my-element></my-element>');
+    // I have been attached to the DOM: < my-element >
+            </code></pre>
+        </section>
+        <section>
+            <h2>More methods</h2>
+            <pre><code class="js" data-trim>
+proto.detachedCallback = function(){
+// called when element removed from the DOM, this is the element
+}
+proto.attributeChangedCallback = function(attrName, oldVal, newVal){
+// called when any attribute on the element changes
+}
+            </code></pre>
+        </section>
+        <section>
+            <h2>Even More methods</h2>
+            <p>We can attach any methods we want!</p>
+            <pre><code class="js" data-trim>
+proto.hide = function(){
+    this.style.display = 'none';
+}
+
+document.querySelector('my-element').hide(); // hide the element
+// or
+$('my-element')[0].hide();
+            </code></pre>
+        </section>
+        <section>
+            <h2>Cool</h2>
+            <p class="fragment">But how can I use these</p>
+            <p class="fragment">Give me some ideas</p>
+        </section>
+        <section>
+            <h2>Example #1</h2>
+            <p class="fragment">Anyone ever work with dropdowns?</p>
+        <pre><code class="fragment html" data-trim>
+<div class="ui dropdown">
+    <div class="text">Dropdown</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+    </div>
+</div>
+        </code></pre>
+        </section>
+        <section>
+            <h2>Live Example!</h2>
+            <div class="dropdown">
+            <div class="ui dropdown">
+                <div class="text">Dropdown</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item">Item 1</div>
+                    <div class="item">Item 2</div>
+                </div>
+            </div>
+            <p class="fragment">I forgot to initialize</p>
+            <pre><code class="fragment js" data-trim>
+$('.dropdown').dropdown();
+            </code></pre>
+        </section>
+        <section>
+            <h2>Not too bad</h2>
+            <p class="fragment">If you're creating static pages</p>
+            <p class="fragment">But what about dynamic ones?</p>
+            <aside class="notes">So let's make a simple custom element</aside>
+        </section>
+        <section>
+            <h2>A simple custom element</h2>
+
+        </section>
+        <section>
+            <h2>Defining</h2>
+            <pre><code class="js" data-trim>
+var proto = Object.create(HTMLElement.prototype);
+
+proto.attachedCallback = function(){
+  var $el = $(this);
+  $el.addClass('ui dropdown');
+  $el.dropdown();
+};
+
+proto.toggle= function(){
+  $(this).dropdown('toggle');
+};
+
+document.registerElement('semantic-dropdown', {
+  prototype: proto
+});
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Using it</h2>
+            <pre><code class="html" data-trim>
+<semantic-dropdown>
+    <div class="text">I'm a custom Dropdown!</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+    </div>
+</semantic-dropdown>
+            </code></pre>
+            <semantic-dropdown >
+                <div class="text">I'm a custom Dropdown!</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item">Item 1</div>
+                    <div class="item">Item 2</div>
+                </div>
+            </semantic-dropdown>
+        </section>
+        <section>
+            <h2>Example #2</h2>
+            <p class="fragment">Time Element</p>
+            <p class="fragment">Quiz time: Did anyone know such a thing existed??</p>
+            <pre><code class="html fragment" data-trim>
+                <span>The after-party starts at <time>20:00</time></span>
+            </code></pre>
+        </section>
+        <section>
+            <h2>But what if I want more?</h2>
+            <ul>
+                <li>Auto updating 'time ago'</li>
+                <li class="fragment">I started this presentation <time id="mytime"is="relative-time" datetime="2015-08-06T03:08:28.876Z"></time></li></li>
+                <li class="fragment">Or Locale aware time</li>
+                <li class="fragment">1 Apr vs Apr 1 depending on my browser settings</li>
+            </ul>
+        </section>
+        <section>
+            <h2>This is Github's Time Element extension library</h2>
+            <p>Just a custom element with extra behavior (relative and local time)</p>
+        </section>
+        <section>
+            <h2>To Use Time Element</h2>
+            <pre><code class="html" data-trim>
+< script src="js/time-elements.js"></script>
+< time is="relative-time"
+    datetime="2015-08-06T03:08:28.876Z">August 6th, 2015< / time>
+             </code></pre>
+        </section>
+        <section>
+            <h2>Example #3</h2>
+            <p>Let's go back to our dropdown</p>
+            <p class="fragment">Semantic let's us register a callback anytime our dropdown changes</p>
+            <pre><code class="js fragment" data-trim>
+$('.dropdown')
+  .dropdown({
+    onChange: function(value, text, $selectedItem) {
+      // custom action
+    }
+  });
+            </code></pre>
+        </section>
+        <section>
+        <section>
+            <h2>Can we improve this?</h2>
+            <p>Would be nice if we got DOM events just like we do with select or input tags</p>
+            <pre><code class="js fragment" data-trim>
+proto.attachedCallback = function(){
+    var self = this;
+    $(self).addClass('ui dropdown').dropdown({
+        onChange : function(value, text, $selectedItem){
+            triggerEvent($selectedItem[0],'selected');
+        }
+    });
+};
+return document.registerElement('semantic-dropdown', {
+    prototype: proto
+});
+            </code></pre>
+        </section>
+        <section>
+            <h2>Trigger Event</h2>
+            <pre><code class="js" data-trim>
+var triggerEvent = function(element, name){
+    var event = document.createEvent('Event');
+    event.initEvent(name, true, true); //can bubble, and is cancellable
+    element.dispatchEvent(event);
+};
+            </code></pre>
+        </section>
+    </section>
+        <section>
+            <h2>Improved Dropdown</h2>
+            <p class="fragment">Almost don't need to know it's there</p>
+            <p class="fragment">And that is a good thing!</p>
+        </section>
+        <section>
+            <h2>Uses of Custom Elements</h2>
+            <ul>
+                <li class="fragment">jQuery Plugin Initialization</li>
+                <li class="fragment">Small fully contained components</li>
+                <li class="fragment">Library events to DOM events</li>
+                <li class="fragment">Layout / Panel Management</li>
+                <li class="fragment">Whatever you can think of</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Will they change everything?</h2>
+            <p class="fragment">No, but that's ok</p>
+
+        </section>
+        <section>
+            <h2>When should you use them?</h2>
+
+        </section>
+        <section>
+            <h2>It depends</h2>
+            <p class="fragment">When you have a need to</p>
+            <p class="fragment">Prime candidates are shared components in your organization</p>
+        </section>
+        <section>
+            <h2>Should you use them?</h2>
+            <p class="fragment">Yes! </p>
+        </section>
+        <section>
+            <h2>Wait a sec... </h2>
+            <q>Webcomponents aren't ready for production</q>
+        </section>
+
+        <section>
+            <h2>Web Components Browser impementation</h2>
+            <img src="./lib/wc-compliance.png">
+        </section>
+        <section>
+            <h2>Why?</h2>
+            <p>It's been years since these were announced</p>
+            <p class="fragment">The specs are out there, why aren't the browsers implementing them?</p>
+        </section>
+        <section>
+            <h2>Not Invented Here?</h2>
+            <p>Google has been primary pusher of web components</p>
+            <p class="fragment">Perhaps too primary</p>
+        </section>
+        <section>
+            <h2>Problems with Web Components today</h2>
+            <p class="fragment">We've got a set of polyfills out there (Polymer)</p>
+            <p class="fragment">Still, widely considered "not ready" for production</p>
+            <p class="fragment">Why not?</p>
+        </section>
+        <section>
+            <h2>Size and Complexity of the polyfills</h2>
+            <p>Particularly with Shadow DOM</p>
+            <aside class="notes">If time allows, talk about what shadow dom is and the herculean effort to introduce this concept to keep styles only within their scoped element</aside>
+        </section>
+        <section>
+            <h2>But the good news!</h2>
+            <p>Custom Elements are not shadow DOM</p>
+            <p>Much easier to polyfill!</p>
+        </section>
+        <section>
+            <h2>Polyfills</h2>
+            <p>You have two choices</p>
+            <ol class="stretch">
+                <li>Webcomponents.org</li>
+                <li>Document-Register-Element</li>
+            </ol>
+        </section>
+        <section>
+            <h2>Comparison</h2>
+            <table class="stretch">
+                <thead><tr>
+                    <th>Polyfill</th>
+                    <th>Size</th>
+                    <th>Compatibility</th>
+                </tr></thead>
+                <tbody>
+                    <tr>
+                        <th>Webcomponents.js</th>
+                        <th>5.1KB</th>
+                        <th>IE10+, Current Browsers, </th>
+                    </tr>
+                    <tr>
+                        <th>Document-Register-Element</th>
+                        <th>3KB</th>
+                        <th>IE8+, Safari, tons of mobile browsers</th>
+                    </tr>
+                </tbody>
+            </table>
+            <aside class="notes">Webcomponents contains polyfills for a weakmap as well.  DRE has slightly different syntax</aside>
+        </section>
+
+        <section>
+            <h2>Custom Elements</h2>
+            <p>A tool for your developer toolbox</p>
+            <p class="fragment">An overlooked one IMO</p>
+            <aside class="notes">Everyone is so excited over full web components that we haven't seen the useful bits we can use today, preferring to wait till the brwosers make up their mind.</aside>
+        </section>
+        <section>
+            <h2>That's all for me!</h2>
+            <p>Questions?</p>
+        </section>
+
+
+<!--
+
+
+        <section>
+            <h2>Custom Elements</h2>
+            <p>Nothing new</p>
+            <p class="fragment">Fun Fact:  Microsoft introduced custom elements back in IE 5.5</p>
+            <p class="fragment">Fun Fact 2: Microsoft officially abandoned support for them in IE 10</p>
+        </section>
+        <section>
+            <h2>Nothing new?</h2>
+            <p>Developers haven't really been waiting</p>
+            <p class="fragment">Custom elements in various forms are all around us</p>
+        </section>
+        <section>
+        <h2>Already Existing Custom Elements</h2>
+            <ul>
+                <li>Angular Directives</li>
+                <li>Ember Components</li>
+                <li>React Components</li>
+                <li>Riot JS</li>
+            </ul>
+            <p class="fragment">All these have a custom element of some form or another</p>
+            <aside class="notes">They also all have different mechanisms for their components, none do shadow dom</aside>
+        </section>
+        <section>
+            <h2>But they all have one big problem</h2>
+            <p class="fragment">Reusability</p>
+            <p class="fragment">Specifically between frameworks</p>
+
+        </section>
+        <section>
+            <h2>Web Components</h2>
+            <p>To the rescue!</p>
+            <p class="fragment">Sounds great, a standard, reusable way of writing components that works across browsers</p>
+            <p class="fragment">Regardless of libraries / frameworks!</p>
+        </section>
+        <section>
+            <h2>But...</h2>
+            <img src="./lib/wc-compliance.png">
+        </section>
+        <section>
+            <h2>Why?</h2>
+            <p>It's been years since these were announced</p>
+            <p class="fragment">The specs are out there, why aren't the browsers implementing them?</p>
+        </section>
+        <section>
+            <h2>Not Invented Here?</h2>
+            <p>Google has been primary pusher of web components</p>
+            <p class="fragment">Perhaps too primary</p>
+        </section>
+        <section>
+            <h2>Problems with Web Components today</h2>
+            <p class="fragment">We've got a set of polyfills out there (Polymer)</p>
+            <p class="fragment">Still, widely considered "not ready" for production</p>
+            <p class="fragment">Why not?</p>
+        </section>
+        <section>
+            <h2>Size and Complexity of the polyfills</h2>
+            <p>Particularly with Shadow DOM</p>
+            <aside class="notes">If time allows, talk about what shadow dom is and the herculean effort to introduce this concept to keep styles only within their scoped element</aside>
+        </section>
+        <section>
+            <h2>But the good news!</h2>
+            <p>The others are much easier to polyfill and have work for almost all browsers</p>
+        </section>
+       -->
+
+
+     </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+    var presStartTime = new Date().toISOString();
+    $('#mytime').attr('datetime', presStartTime);
+
+</script>
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function() {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, condition: function() {
+                return !!document.querySelector('pre code');
+            }, callback: function() {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true}
+        ]
+    });
+
+</script>
+
+</body>
+</html>
