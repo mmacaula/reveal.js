@@ -95,7 +95,7 @@
         <section>
             <h2>Agenda</h2>
             <ul>
-                <li>What are custom elements</li>
+                <li>What are custom elements?</li>
                 <li>Some examples on using them</li>
                 <li>Can we really use them today?</li>
             </ul>
@@ -107,7 +107,7 @@
 
         </section>
         <section>
-            <h2>Web Components is a general term</h2>
+            <h2>Web Components</h2>
             <p>Actually 4 different specs</p>
             <ul>
                 <li>Custom Elements</li>
@@ -237,6 +237,7 @@ $('.dropdown').dropdown();
             <h2>Not too bad</h2>
             <p class="fragment">If you're creating static pages</p>
             <p class="fragment">But what about dynamic ones?</p>
+            <aside class="notes">So let's make a simple custom element</aside>
         </section>
         <section>
             <h2>A simple custom element</h2>
@@ -250,7 +251,7 @@ var proto = Object.create(HTMLElement.prototype);
 proto.attachedCallback = function(){
   var $el = $(this);
   $el.addClass('ui dropdown');
-  $(this).dropdown();
+  $el.dropdown();
 };
 
 proto.toggle= function(){
@@ -267,14 +268,19 @@ document.registerElement('semantic-dropdown', {
             <h2>Using it</h2>
             <pre><code class="html" data-trim>
 <semantic-dropdown>
-contents
+    <div class="text">I'm a custom Dropdown!</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+    </div>
 </semantic-dropdown>
             </code></pre>
             <semantic-dropdown >
                 <div class="text">I'm a custom Dropdown!</div>
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                    <div class="item">Inspect me! </div>
+                    <div class="item">Item 1</div>
                     <div class="item">Item 2</div>
                 </div>
             </semantic-dropdown>
@@ -305,7 +311,7 @@ contents
             <pre><code class="html" data-trim>
 < script src="js/time-elements.js"></script>
 < time is="relative-time"
-    datetime="2015-08-06T03:08:28.876Z">< / time>
+    datetime="2015-08-06T03:08:28.876Z">August 6th, 2015< / time>
              </code></pre>
         </section>
         <section>
@@ -321,12 +327,12 @@ $('.dropdown')
   });
             </code></pre>
         </section>
-
+        <section>
         <section>
             <h2>Can we improve this?</h2>
             <p>Would be nice if we got DOM events just like we do with select or input tags</p>
             <pre><code class="js fragment" data-trim>
-proto.createdCallback = function(){
+proto.attachedCallback = function(){
     var self = this;
     $(self).addClass('ui dropdown').dropdown({
         onChange : function(value, text, $selectedItem){
@@ -342,13 +348,14 @@ return document.registerElement('semantic-dropdown', {
         <section>
             <h2>Trigger Event</h2>
             <pre><code class="js" data-trim>
-var trigger = function(element, name){
+var triggerEvent = function(element, name){
     var event = document.createEvent('Event');
     event.initEvent(name, true, true); //can bubble, and is cancellable
     element.dispatchEvent(event);
 };
             </code></pre>
         </section>
+    </section>
         <section>
             <h2>Improved Dropdown</h2>
             <p class="fragment">Almost don't need to know it's there</p>
@@ -386,10 +393,7 @@ var trigger = function(element, name){
             <h2>Wait a sec... </h2>
             <q>Webcomponents aren't ready for production</q>
         </section>
-        <section>
-            <h2>True</h2>
-            <p>Let's talk about that</p>
-        </section>
+
         <section>
             <h2>Web Components Browser impementation</h2>
             <img src="./lib/wc-compliance.png">
