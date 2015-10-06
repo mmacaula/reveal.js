@@ -1,0 +1,1964 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Amper",
+				"AmpersandCollection"
+			],
+			[
+				"Amp",
+				"AmpersandState"
+			],
+			[
+				"depd",
+				"dependency"
+			],
+			[
+				"Am",
+				"AmpersandState"
+			],
+			[
+				"Be",
+				"BetterModelClass"
+			],
+			[
+				"Model",
+				"ModelClass"
+			],
+			[
+				"init",
+				"initialize"
+			],
+			[
+				"dat",
+				"dataSource"
+			],
+			[
+				"ap",
+				"app/"
+			],
+			[
+				"Data",
+				"DataSourceLayer"
+			],
+			[
+				"Da",
+				"DataSourceLayerView"
+			],
+			[
+				"group",
+				"groupedModel"
+			],
+			[
+				"orig",
+				"originalCollection"
+			],
+			[
+				"add",
+				"addedModel"
+			],
+			[
+				"ori",
+				"originalCollection"
+			],
+			[
+				"Mod",
+				"ModelCollection"
+			],
+			[
+				"Gr",
+				"GroupedCollection"
+			],
+			[
+				"Mo",
+				"ModelCollection"
+			],
+			[
+				"scn",
+				"scenario.collection.js"
+			],
+			[
+				"scenario",
+				"scenariosFetchPromise"
+			],
+			[
+				"scen",
+				"scenariosFetchPromise"
+			],
+			[
+				"ret",
+				"retrieveData"
+			],
+			[
+				"rener",
+				"renderLoginView"
+			],
+			[
+				"plu",
+				"pluginsToSet"
+			],
+			[
+				"f",
+				"FPOLoginBG1.png	w:1739 h:924"
+			],
+			[
+				"invali",
+				"invalidCreditials"
+			],
+			[
+				"a",
+				"assets/"
+			],
+			[
+				"SourceSan",
+				"SourceSansPro-Bold.ttf"
+			],
+			[
+				"So",
+				"SourceSansPro-Bold.ttf"
+			],
+			[
+				"Log",
+				"LoginView"
+			],
+			[
+				"l",
+				"login.js"
+			],
+			[
+				"u",
+				"oauth.js"
+			],
+			[
+				"getS",
+				"getSessionId〔function〕"
+			],
+			[
+				"arch",
+				"archiveUrl〔variable〕"
+			],
+			[
+				"acce",
+				"access_token"
+			],
+			[
+				"cl",
+				"cl	console.log"
+			],
+			[
+				"clie",
+				"clientPass"
+			],
+			[
+				"remove",
+				"removeSubview"
+			],
+			[
+				"mapT",
+				"mapToolViews"
+			],
+			[
+				"mapToo",
+				"mapToolViews"
+			],
+			[
+				"showCon",
+				"showContentViewForIconView"
+			],
+			[
+				"back",
+				"background-color: 〔property〕"
+			],
+			[
+				"cur",
+				"currentIconView"
+			],
+			[
+				"curr",
+				"currentMainView"
+			],
+			[
+				"curren",
+				"currentMainView"
+			],
+			[
+				"selec",
+				"selectedView〔variable〕"
+			],
+			[
+				"sele",
+				"selectedView〔variable〕"
+			],
+			[
+				"curre",
+				"currentMainView"
+			],
+			[
+				"current",
+				"currentIconView"
+			],
+			[
+				"lo",
+				"location.component.hbs"
+			],
+			[
+				"sel",
+				"selectedView〔variable〕"
+			],
+			[
+				"plug",
+				"pluginMap"
+			],
+			[
+				"righ",
+				"rightPanelView"
+			],
+			[
+				"compo",
+				"component.layout.js"
+			],
+			[
+				"cesiu",
+				"cesiumExplorer"
+			],
+			[
+				"he",
+				"header"
+			],
+			[
+				"Lay",
+				"LayersComponent"
+			],
+			[
+				"esli",
+				"eslintLoaderIncludes〔variable〕"
+			],
+			[
+				"babe",
+				"babelLoaderIncludes〔variable〕"
+			],
+			[
+				"es",
+				"eslintLoaderIncludes"
+			],
+			[
+				"bab",
+				"babelLoaderIncludes〔variable〕"
+			],
+			[
+				"ind",
+				"indexjs〔variable〕"
+			],
+			[
+				"compon",
+				"componentName〔argument〕"
+			],
+			[
+				"pa",
+				"packageJson"
+			],
+			[
+				"lef",
+				"leftPosition〔variable〕"
+			],
+			[
+				"dis",
+				"distance.legend.scss"
+			],
+			[
+				"la",
+				"default.base.layer.hbs"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"visi",
+				"visibleModel"
+			],
+			[
+				"base",
+				"baseLayer"
+			],
+			[
+				"Ar",
+				"ArcGisMapServerImageryProvider"
+			],
+			[
+				"Ite",
+				"ItemTemplate"
+			],
+			[
+				"radio",
+				"radioChannel〔variable〕"
+			],
+			[
+				"worksp",
+				"workspaceId〔argument〕"
+			],
+			[
+				"Big",
+				"BingMapsImageryProvider"
+			],
+			[
+				"Bing",
+				"BingMapsImageryProvider"
+			],
+			[
+				"imag",
+				"imageryProviderJson〔variable〕"
+			],
+			[
+				"subC",
+				"subcollection"
+			],
+			[
+				"gro",
+				"groupedModel"
+			],
+			[
+				"Group",
+				"GroupedSubcollection"
+			],
+			[
+				"lay",
+				"layerJson"
+			],
+			[
+				"ima",
+				"imageryProviderJson"
+			],
+			[
+				"ArcG",
+				"ArcGISLayer"
+			],
+			[
+				"over",
+				"overflow-x"
+			],
+			[
+				"ov",
+				"overflow-y"
+			],
+			[
+				"handl",
+				"handleResponse"
+			],
+			[
+				"snp",
+				"snapshots"
+			],
+			[
+				"snap",
+				"snapshotIds"
+			],
+			[
+				"snaph",
+				"snapshots"
+			],
+			[
+				"pare",
+				"parentAttr〔argument〕"
+			],
+			[
+				"queryBy",
+				"$queryByHook〔function〕"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 17754,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Introduction to Ampersand.js and Radio:",
+			"settings":
+			{
+				"buffer_size": 6224,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 328.0,
+		"last_filter": "rename t",
+		"selected_items":
+		[
+			[
+				"rename t",
+				"Emmet: Rename Tag"
+			],
+			[
+				"format",
+				"Tag: Auto-Format Tags on Document"
+			],
+			[
+				"prefs",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"togglelin",
+				"SublimeLinter: Toggle Linter"
+			],
+			[
+				"wrap",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"spaces",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"git dif",
+				"Git: Diff Current File"
+			],
+			[
+				"terminal",
+				"Preferences: Terminal Settings – User"
+			],
+			[
+				"keymap",
+				"Keymaps: Find a keymap for..."
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"jsonpr",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"package re",
+				"Package Control: Remove Package"
+			],
+			[
+				"find",
+				"FindKeyConflicts: Command Search"
+			],
+			[
+				"prett",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"setsjs",
+				"Set Syntax: JSON"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"instap",
+				"Package Control: Install Package"
+			],
+			[
+				"data",
+				"Emmet: Encode\\Decode Image to data:URL"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"packcon remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"ssht",
+				"Set Syntax: HTML"
+			],
+			[
+				"for",
+				"Vintageous: Exit from command mode"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Object Value JS"
+			],
+			[
+				"fo",
+				"Format: Javascript"
+			],
+			[
+				"close",
+				"File: Close All"
+			],
+			[
+				"",
+				"Format: Javascript"
+			],
+			[
+				"form",
+				"Format: Javascript"
+			],
+			[
+				"gitshow",
+				"Git: Show Current File"
+			],
+			[
+				"setsjavas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"forma",
+				"Format: Javascript"
+			],
+			[
+				"git add",
+				"Git: Add Current File"
+			],
+			[
+				"foramt",
+				"Format: Javascript"
+			],
+			[
+				"handl",
+				"Set Syntax: Handlebars"
+			],
+			[
+				"convertto",
+				"Indentation: Convert to Spaces"
+			],
+			[
+				"ssgroo",
+				"Set Syntax: Groovy"
+			],
+			[
+				"ssjava",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"setjso",
+				"Set Syntax: JSON"
+			]
+		],
+		"width": 601.0
+	},
+	"console":
+	{
+		"height": 209.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/mmacaula/dev/other/reveal.js"
+	],
+	"file_history":
+	[
+		"/Users/mmacaula/.zshrc",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/package.json",
+		"/Users/mmacaula/dev/aviture/ce/ce-ui-guide/lib/dropdown/stk-dropdown.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/test/utils/grouped.subcollection.test.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/package.json",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/tools/prebuild.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-components/cesium-explorer-distance-legend/src/distance.legend.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/webpack.config.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/README.md",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/.eslintrc",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/style.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/cesium.explorer.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/layers/base.layer.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/cesium/cesium.viewer.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/cesium/czml.data.source.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/cesium/julian.date.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/cesium/kml.data.source.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-components/cesium-explorer-toc-component/src/component/locationComponent/capture.location.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/network/oauth.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/tools/prebuild.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/src/app.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium/Source/Scene/OIT.js",
+		"/Users/mmacaula/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/src/style.js",
+		"/Users/mmacaula/dev/aviture/ce/ce-ui-guide/webpack.config.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-components/cesium-explorer-distance-legend/package.json",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/cesium/cesium.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/cesium/layer.views.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/webpack.config.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/server/api/models/Location.js",
+		"/Users/mmacaula/dev/aviture/ce/ce-ui-guide/lib/accordion/ce-accordion.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/layers/czml.layer.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/layers/data.source.layer.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/grouped.subcollection.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/tests/health.checks.spec.js",
+		"/Users/mmacaula/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/scenario.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/scenario.collection.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/cesium/layer.view.js",
+		"/Users/mmacaula/Documents/cesium-explorer/Cost-benefit-analysis.txt",
+		"/Users/mmacaula/Dropbox/Mackup/Library/Application Support/Sublime Text 3/Packages/User/macros/shoudl.sublime-macro",
+		"/Users/mmacaula/Documents/cesium-explorer/sprint review notes 9-24.txt",
+		"/Users/mmacaula/Documents/cesium-explorer/retrospective notes 9-28.txt",
+		"/Users/mmacaula/Documents/cesium-explorer/AGI-concerns",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/side.panel.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/side.panel.accordion.section.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/content.hbs",
+		"/Users/mmacaula/dev/aviture/ce/ce-ui-guide/lib/_settings.scss",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/router.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/mixins/has.editable.name.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/_content.scss",
+		"/Users/mmacaula/dev/aviture/ce/ce-ui-guide/package.json",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-components/cesium-explorer-toc-component/src/component/baseLayers/add.layer.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/api.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/locations/location.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/server/api/controllers/LocationController.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/server/api/controllers/ScenarioController.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/server/api/controllers/SnapshotController.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/server/api/controllers/TagController.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-components/cesium-explorer-toc-component/src/component/locationComponent/location.component.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-components/cesium-explorer-toc-component/src/component/locationComponent/capture.location.hbs",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/mixins/auth.ajax.config.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/server/api/models/Layer.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/server/api/controllers/createdWithId.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-components/cesium-explorer-toc-component/src/component/primaryComponent/primary.component.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/run-migrate.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/user.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/style.scss",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/content.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/scenario.management.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/network/httpService.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/server/api/controllers/LayerController.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/layers/layer.props.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/locations/location.collection.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/snapshots/snapshot.collection.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/style/_swatch.scss",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/header/header.hbs",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/everything.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/header/header.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-components/cesium-explorer-toc-component/src/style/_primary.component.scss",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/server/api/models/Scenario.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/component.layout.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/component.layout.hbs",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/components/scenarioMgr/scenario.mgr.js",
+		"/Users/mmacaula/dev/aviture/ce/ce-ui-guide/lib/dropdown/_style.scss",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/login/login.view.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/network/refresh.oauth.sync.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/style/_login.scss",
+		"/Users/mmacaula/dev/aviture/ce/ce-ui-guide/lib/guide/templates/dropdown/index.html",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/Localization.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/style/_z-index.scss",
+		"/Users/mmacaula/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/mmacaula/dev/aviture/ce/explorer.sublime-project",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/.eslintrc",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/network/login.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/login/login.hbs",
+		"/Users/mmacaula/dev/aviture/ce/ce-ui-guide/lib/form/_style.scss",
+		"/Users/mmacaula/dev/aviture/ce/ce-ui-guide/index.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/tomcat/webapps/glads-web/login.html",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-components/cesium-explorer-toc-component/src/component/baseLayers/layer.group.hbs",
+		"/Users/mmacaula/dev/aviture/ce/ce-ui-guide/vendor/semantic-ui/semantic.css",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/helpers/local.js",
+		"/Users/mmacaula/dev/aviture/ce/ce-ui-guide/lib/base.scss",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/tomcat/webapps/glads-web/js/login.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/login/login.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/style/_flex.scss",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/tools/configs/demonstration.ninja.nginx.config",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/test/utils/mixins/has.julian.date.test.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/run-test-tomcat.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/run-postgres.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer/src/index.html",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/create-migrate.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/create-test-tomcat.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/create-volume.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/app/state.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/src/utils/network/auth.js",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/kill-containers.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/migrate.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/create-tomcat.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/stk-online-db-migrate/jdbc.properties",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/tests/config/local.json",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/run-tomcat.sh",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/db-scripts/insert-test-users.sql",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/tests/README.md",
+		"/Users/mmacaula/Downloads/stk-glads-20150915/REST-GladsWeb-soapui-project.xml",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/README.md",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/config/default.json",
+		"/Users/mmacaula/dev/aviture/ce/cesium-explorer-platform/integration/docker/.gitignore"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"-public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/, -cesium/Build/*, -cesium/Source/Cesium.js, -semantic-ui/*",
+			"-public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/, -cesium/Build/*, -cesium/Source/Cesium.js",
+			"-public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/, -cesium/Build/*",
+			"-public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"*, ",
+			"*, -integration/docker/*tomcat*/",
+			"*, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"*, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"-public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"*",
+			"-public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/, -terriajs",
+			" -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			" -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/, node_modules/*",
+			" -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"-*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			" -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/, -terriajs/*",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/, -terriajs",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/, cesium-explorer/*",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore, -integration/docker/*tomcat*/",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -.gitignore",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -cesium/*, -.gitignore",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, -cesium/*",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, server/*, ",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, cesium/*, -*.gltf",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, cesium/*",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, cesium",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, src/app/*",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, +*/src/app/*",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*, +src/app/*",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js, -server/*",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css, -sails.io.js",
+			"-node_modules/*, -public/*, -*bundle.js, -*.min.css",
+			"-node_modules/*, -public/*, -*bundle.js, -*.\\.min.*",
+			"-node_modules/*, -public/*, -*bundle.js, -\\.min.*",
+			"-node_modules/*, -public/*, -*bundle.js, -*\\.min.*",
+			"-node_modules/*, -public/*, -*bundle.js",
+			"-node_modules/*, -public/*",
+			"",
+			"/eslint/**",
+			"eslint/**",
+			"eslint/*",
+			"-node_modules/*, -public/*",
+			"-node_modules/*, -public/*, terriajs/*",
+			"-node_modules/*, -public/*, terriajs",
+			"-node_modules/*, -public/*, +terriajs",
+			"-node_modules/*, -public/*",
+			"",
+			"-node_modules/*, -public/*",
+			"-node_modules/*.*, -public/*.*",
+			"-node_modules/*.*",
+			"-node_modules/*",
+			"-node_modules",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"PATH",
+			"ulimit",
+			"ce-dropdown",
+			"ce-tab",
+			"ce-accordion",
+			"ce-",
+			".name",
+			"3000",
+			".name",
+			"GroupedSubcollection",
+			"name",
+			".name",
+			"collection.findWhere({name: 'C'})",
+			"name",
+			"collection.findWhere({name: 'B'})",
+			"name",
+			"collection.findWhere({name:'B'})",
+			"collection.findWhere({name:'A'})",
+			"name",
+			"resolve",
+			"AdjustTranslucentFS",
+			"SkyBox",
+			"Sky",
+			"require('fs')",
+			"Shaders/",
+			"require('fs')",
+			"SunVS",
+			"SkyBoxFS",
+			"DepthPlanFS",
+			"AdjustTranslucentFS",
+			"terriajs-cesium",
+			"cesium",
+			"terriajs-cesium",
+			"ThirdParty",
+			"Thirdparty",
+			"terriajs-cesium",
+			"jpg",
+			"loadPromise",
+			"typeDisplay",
+			"addLayersForScenario",
+			"addLayers",
+			"addLayer",
+			"GroupedSubcollection",
+			"collectionName",
+			"GroupedSubcollection",
+			"app",
+			"Save Location",
+			"href=\"#\"",
+			"workspace",
+			"worksapce",
+			"UUID",
+			"getWorkspace",
+			"font-size",
+			"isEditing",
+			"newLogin",
+			"name",
+			"Name",
+			"hasEditableAttr",
+			"export const",
+			"13",
+			"min-width",
+			"navigate",
+			"scenario = ",
+			"component",
+			"getWorkspace",
+			"myDropdown",
+			"scenariosManagementDropdown",
+			"myDropdown",
+			"login",
+			"onScenarioClick",
+			"MyInputView",
+			"addPlugins",
+			"loginView",
+			"login.js",
+			"booleanClass",
+			"spinner",
+			"'",
+			"png",
+			"$alert-color",
+			"error",
+			"font",
+			"error",
+			"input-error",
+			"error",
+			"Z0",
+			"output",
+			"sourc",
+			"STK-Online",
+			"handleSubmit",
+			"beforeSub",
+			"Source Sans Pro",
+			"SourceSansPro",
+			"terriajs-cesium/",
+			"cesium/",
+			"stk-online/",
+			"checkAuthenticated",
+			"setAuth",
+			"_getSessionId",
+			"scenarioPromise",
+			"getCurrentUser",
+			"backbone-events-standalone",
+			"backbone-events.standalone",
+			"checkAuthenticated",
+			"checkAuth",
+			"ajax",
+			"_ajax",
+			"refreshTokens",
+			"getCred",
+			"me",
+			"/me",
+			"me",
+			"statePromiseResolved",
+			"response",
+			"Number",
+			"post",
+			"button",
+			"button-group",
+			"ul ",
+			"ul",
+			"button-group",
+			"grant_type",
+			"btoa",
+			"_ajax",
+			"login",
+			"links",
+			"192.168.99.100",
+			"workspace",
+			"workspaceId"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"stk-dropdown",
+			"stk-tab",
+			"stk-accordion",
+			"cesium",
+			"scenario",
+			"Scenario",
+			"semantic-accordion",
+			"explorer-tab",
+			"explorer-accordion",
+			"explorer-tab",
+			"groupName",
+			"socket.sync"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/Users/mmacaula/dev/other/reveal.js"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17754,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16230,
+								16230
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"expand_region_settings": "{\"stack\": [{\"start\": 11053, \"end\": 11056}, {\"start\": 11053, \"end\": 11086}], \"hash\": \"d59ca2a6b805b1ede53b22136575fa80\"}",
+							"highlight_line": true,
+							"is_xml": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": true,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_insert",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"repeat_data":
+								[
+									"native",
+									[
+										"sequence",
+										{
+											"commands":
+											[
+												[
+													"expand_abbreviation_by_tab",
+													null
+												],
+												[
+													"expand_abbreviation_by_tab",
+													null
+												],
+												[
+													"expand_abbreviation_by_tab",
+													null
+												],
+												[
+													"insert",
+													{
+														"characters": "A"
+													}
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"insert",
+													{
+														"characters": "p"
+													}
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"copy",
+													null
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"insert",
+													{
+														"characters": "cod"
+													}
+												],
+												[
+													"insert_best_completion",
+													{
+														"default": "	",
+														"exact": false
+													}
+												],
+												[
+													"next_field",
+													null
+												],
+												[
+													"move_to",
+													{
+														"to": "bol"
+													}
+												],
+												[
+													"paste_and_indent",
+													null
+												],
+												[
+													"insert",
+													{
+														"characters": "\nte"
+													}
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"expand_abbreviation_by_tab",
+													null
+												],
+												[
+													"insert",
+													{
+														"characters": "template"
+													}
+												],
+												[
+													"insert",
+													{
+														"characters": " :"
+													}
+												],
+												[
+													"insert",
+													{
+														"characters": " "
+													}
+												],
+												[
+													"insert_snippet",
+													{
+														"contents": "'$0'"
+													}
+												],
+												[
+													"insert",
+													{
+														"characters": "<div"
+													}
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"insert",
+													{
+														"characters": " v"
+													}
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"insert",
+													{
+														"characters": "div><"
+													}
+												],
+												[
+													"tag_close_tag_on_slash",
+													null
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"left_delete",
+													null
+												],
+												[
+													"insert",
+													{
+														"characters": " /div"
+													}
+												],
+												[
+													"move",
+													{
+														"by": "characters",
+														"forward": true
+													}
+												],
+												[
+													"move",
+													{
+														"by": "characters",
+														"forward": false
+													}
+												],
+												[
+													"insert",
+													{
+														"characters": ">"
+													}
+												],
+												[
+													"move",
+													{
+														"by": "characters",
+														"forward": false
+													}
+												],
+												[
+													"move",
+													{
+														"by": "characters",
+														"forward": false
+													}
+												],
+												[
+													"move",
+													{
+														"by": "characters",
+														"forward": false
+													}
+												],
+												[
+													"move",
+													{
+														"by": "characters",
+														"forward": false
+													}
+												],
+												[
+													"move",
+													{
+														"by": "characters",
+														"forward": false
+													}
+												],
+												[
+													"move",
+													{
+														"by": "characters",
+														"forward": false
+													}
+												],
+												[
+													"move",
+													{
+														"by": "lines",
+														"forward": true
+													}
+												],
+												[
+													"move",
+													{
+														"by": "lines",
+														"forward": true
+													}
+												],
+												[
+													"move",
+													{
+														"by": "lines",
+														"forward": true
+													}
+												],
+												[
+													"move",
+													{
+														"by": "lines",
+														"forward": false
+													}
+												]
+											]
+										}
+									],
+									"mode_insert",
+									null
+								],
+								"sequence": "",
+								"xpos": 27
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 11245.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Introduction to Ampersand.js and Radio:",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 6224,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5421,
+								5421
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"vintage":
+							{
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 24
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 3776.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 110.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ind",
+				"index.html"
+			],
+			[
+				"packag",
+				"cesium-explorer/package.json"
+			],
+			[
+				"side.pan",
+				"cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/side.panel.js"
+			],
+			[
+				"webpack.con",
+				"cesium-explorer-platform/webpack.config.js"
+			],
+			[
+				"grouped.sub.te",
+				"cesium-explorer-platform/test/utils/grouped.subcollection.test.js"
+			],
+			[
+				"grouped.s",
+				"cesium-explorer-platform/src/utils/grouped.subcollection.js"
+			],
+			[
+				"readme.",
+				"cesium-explorer/README.md"
+			],
+			[
+				"style.",
+				"cesium-explorer-platform/src/style.js"
+			],
+			[
+				"capture.lo",
+				"cesium-explorer-components/cesium-explorer-toc-component/src/component/locationComponent/capture.location.js"
+			],
+			[
+				"package",
+				"cesium-explorer/package.json"
+			],
+			[
+				"oau",
+				"cesium-explorer-platform/src/utils/network/oauth.js"
+			],
+			[
+				"style.js",
+				"cesium-explorer-platform/src/style.js"
+			],
+			[
+				"style",
+				"cesium-explorer/src/style.js"
+			],
+			[
+				"webpack",
+				"cesium-explorer/webpack.config.js"
+			],
+			[
+				"app.js",
+				"cesium-explorer/src/app.js"
+			],
+			[
+				"webpack.config",
+				"ce-ui-guide/webpack.config.js"
+			],
+			[
+				"package.json",
+				"cesium-explorer/package.json"
+			],
+			[
+				"oauth",
+				"cesium-explorer-platform/src/utils/network/oauth.js"
+			],
+			[
+				"layer.view",
+				"cesium-explorer-platform/src/components/cesium/layer.views.js"
+			],
+			[
+				"base.layer",
+				"cesium-explorer-platform/src/app/layers/base.layer.js"
+			],
+			[
+				"cesium.js",
+				"cesium-explorer-platform/src/components/cesium/cesium.js"
+			],
+			[
+				"ce-acc",
+				"ce-ui-guide/lib/accordion/ce-accordion.js"
+			],
+			[
+				"",
+				"cesium-explorer-platform/src/components/cesium/layer.views.js"
+			],
+			[
+				"viewer",
+				"cesium-explorer-platform/src/utils/cesium/cesium.viewer.js"
+			],
+			[
+				"datasource.l",
+				"cesium-explorer-platform/src/app/layers/data.source.layer.js"
+			],
+			[
+				"czml.l",
+				"cesium-explorer-platform/src/app/layers/czml.layer.js"
+			],
+			[
+				"czml.",
+				"cesium-explorer-platform/src/utils/cesium/czml.data.source.js"
+			],
+			[
+				"czml",
+				"cesium-explorer-platform/src/app/layers/czml.layer.js"
+			],
+			[
+				"heal",
+				"cesium-explorer-platform/integration/tests/health.checks.spec.js"
+			],
+			[
+				"group.su.t",
+				"cesium-explorer-platform/test/utils/grouped.subcollection.test.js"
+			],
+			[
+				"location",
+				"cesium-explorer/server/api/models/Location.js"
+			],
+			[
+				"app",
+				"cesium-explorer/src/app.js"
+			],
+			[
+				"group.test",
+				"cesium-explorer-platform/test/utils/grouped.subcollection.test.js"
+			],
+			[
+				"scenar.col",
+				"cesium-explorer-platform/src/app/scenario.collection.js"
+			],
+			[
+				"scenario",
+				"cesium-explorer-platform/src/app/scenario.js"
+			],
+			[
+				"side.pa",
+				"cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/side.panel.accordion.section.js"
+			],
+			[
+				"grouped",
+				"cesium-explorer-platform/src/utils/grouped.subcollection.js"
+			],
+			[
+				"snapshot.coll",
+				"cesium-explorer-platform/src/app/snapshots/snapshot.collection.js"
+			],
+			[
+				"location.co",
+				"cesium-explorer-platform/src/app/locations/location.collection.js"
+			],
+			[
+				"location.js",
+				"cesium-explorer/server/api/models/Location.js"
+			],
+			[
+				"layer.js",
+				"cesium-explorer/server/api/models/Layer.js"
+			],
+			[
+				"base.lay",
+				"cesium-explorer-platform/src/app/layers/base.layer.js"
+			],
+			[
+				"layerprop",
+				"cesium-explorer-platform/src/app/layers/layer.props.js"
+			],
+			[
+				"capture.",
+				"cesium-explorer-components/cesium-explorer-toc-component/src/component/locationComponent/capture.location.js"
+			],
+			[
+				"location.com",
+				"cesium-explorer-components/cesium-explorer-toc-component/src/component/locationComponent/location.component.js"
+			],
+			[
+				"api.js",
+				"cesium-explorer-platform/src/api.js"
+			],
+			[
+				"layercon",
+				"cesium-explorer/server/api/controllers/LayerController.js"
+			],
+			[
+				"api",
+				"cesium-explorer-platform/src/api.js"
+			],
+			[
+				"add.lay",
+				"cesium-explorer-components/cesium-explorer-toc-component/src/component/baseLayers/add.layer.js"
+			],
+			[
+				"https",
+				"cesium-explorer-platform/src/utils/network/httpService.js"
+			],
+			[
+				"content.js",
+				"cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/content.js"
+			],
+			[
+				"primar.scs",
+				"cesium-explorer-components/cesium-explorer-toc-component/src/style/_primary.component.scss"
+			],
+			[
+				"content.scs",
+				"cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/_content.scss"
+			],
+			[
+				"settings",
+				"ce-ui-guide/lib/_settings.scss"
+			],
+			[
+				"content.sc",
+				"cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/_content.scss"
+			],
+			[
+				"every",
+				"cesium-explorer-platform/integration/docker/everything.sh"
+			],
+			[
+				"router.js",
+				"cesium-explorer-platform/src/app/router.js"
+			],
+			[
+				"style.scs",
+				"cesium-explorer-platform/src/style.scss"
+			],
+			[
+				"toc.com",
+				"cesium-explorer-components/cesium-explorer-toc-component/src/component/primaryComponent/primary.component.js"
+			],
+			[
+				"hase",
+				"cesium-explorer-platform/src/utils/mixins/has.editable.name.js"
+			],
+			[
+				"scenario.js",
+				"cesium-explorer/server/api/models/Scenario.js"
+			],
+			[
+				"webpac",
+				"cesium-explorer/webpack.config.js"
+			],
+			[
+				"user.js",
+				"cesium-explorer-platform/src/app/user.js"
+			],
+			[
+				"run-mi",
+				"cesium-explorer-platform/integration/docker/run-migrate.sh"
+			],
+			[
+				"header.hb",
+				"cesium-explorer-platform/src/components/header/header.hbs"
+			],
+			[
+				"content.b",
+				"cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/content.hbs"
+			],
+			[
+				"header.js",
+				"cesium-explorer-platform/src/components/header/header.js"
+			],
+			[
+				"comp",
+				"cesium-explorer-platform/src/app/component.layout.hbs"
+			],
+			[
+				"scenmgmt",
+				"cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/scenario.management.js"
+			],
+			[
+				"scenario.m",
+				"cesium-explorer-platform/src/components/scenarioMgr/scenario.mgr.js"
+			],
+			[
+				"swat",
+				"cesium-explorer-platform/src/style/_swatch.scss"
+			],
+			[
+				"header.h",
+				"cesium-explorer-platform/src/components/header/header.hbs"
+			],
+			[
+				"header",
+				"cesium-explorer-platform/src/components/header/header.hbs"
+			],
+			[
+				"z-in",
+				"cesium-explorer-platform/src/style/_z-index.scss"
+			],
+			[
+				"dista",
+				"cesium-explorer-components/cesium-explorer-distance-legend/src/distance.legend.js"
+			],
+			[
+				"cesium.exp",
+				"cesium-explorer-platform/src/app/cesium.explorer.js"
+			],
+			[
+				"oaut",
+				"cesium-explorer-platform/src/utils/network/oauth.js"
+			],
+			[
+				"_log",
+				"cesium-explorer-platform/src/style/_login.scss"
+			],
+			[
+				"accor.sec",
+				"cesium-explorer-platform/src/components/scenarioMgr/scenarioMgmt/side.panel.accordion.section.js"
+			],
+			[
+				"loca",
+				"cesium-explorer-platform/src/utils/Localization.js"
+			],
+			[
+				"web",
+				"cesium-explorer/webpack.config.js"
+			],
+			[
+				"login.vi",
+				"cesium-explorer-platform/src/app/login/login.view.js"
+			],
+			[
+				"sync",
+				"cesium-explorer-platform/src/utils/network/refresh.oauth.sync.js"
+			],
+			[
+				"scen",
+				"cesium-explorer-platform/src/app/scenario.js"
+			],
+			[
+				"component.lay",
+				"cesium-explorer-platform/src/app/component.layout.js"
+			],
+			[
+				"router",
+				"cesium-explorer-platform/src/app/router.js"
+			],
+			[
+				"login.js",
+				"cesium-explorer-platform/src/utils/network/login.js"
+			],
+			[
+				"group",
+				"cesium-explorer-components/cesium-explorer-toc-component/src/component/baseLayers/layer.group.hbs"
+			],
+			[
+				"sce",
+				"cesium-explorer-platform/src/app/scenario.js"
+			],
+			[
+				"auth",
+				"cesium-explorer-platform/src/utils/mixins/auth.ajax.config.js"
+			],
+			[
+				"swatch",
+				"cesium-explorer-platform/src/style/_swatch.scss"
+			],
+			[
+				"header.",
+				"cesium-explorer-platform/src/components/header/header.hbs"
+			],
+			[
+				"webpa",
+				"cesium-explorer/webpack.config.js"
+			],
+			[
+				"login.html",
+				"cesium-explorer-platform/integration/docker/tomcat/webapps/glads-web/login.html"
+			],
+			[
+				"log",
+				"cesium-explorer-platform/src/app/login/login.js"
+			],
+			[
+				"login.",
+				"cesium-explorer-platform/src/app/login/login.hbs"
+			],
+			[
+				"platform/sty",
+				"cesium-explorer-platform/src/style.js"
+			],
+			[
+				"distance.l",
+				"cesium-explorer-components/cesium-explorer-distance-legend/src/distance.legend.js"
+			],
+			[
+				"base",
+				"ce-ui-guide/lib/base.scss"
+			],
+			[
+				"webpakc",
+				"cesium-explorer/webpack.config.js"
+			],
+			[
+				"_flex",
+				"cesium-explorer-platform/src/style/_flex.scss"
+			],
+			[
+				"nginx",
+				"cesium-explorer/tools/configs/demonstration.ninja.nginx.config"
+			],
+			[
+				"scenar",
+				"cesium-explorer-platform/src/app/scenario.collection.js"
+			],
+			[
+				"o",
+				"cesium-explorer-platform/src/utils/network/oauth.js"
+			],
+			[
+				"index.html",
+				"cesium-explorer/src/index.html"
+			],
+			[
+				"index.js",
+				"ce-ui-guide/index.js"
+			],
+			[
+				"everythi",
+				"cesium-explorer-platform/integration/docker/everything.sh"
+			],
+			[
+				"everything",
+				"cesium-explorer-platform/integration/docker/everything.sh"
+			],
+			[
+				"scena",
+				"cesium-explorer-platform/src/app/scenario.collection.js"
+			],
+			[
+				"scenar.co",
+				"cesium-explorer-platform/src/app/scenario.collection.js"
+			],
+			[
+				"httpser",
+				"cesium-explorer-platform/src/utils/network/httpService.js"
+			],
+			[
+				"aut.aj",
+				"cesium-explorer-platform/src/utils/mixins/auth.ajax.config.js"
+			],
+			[
+				"scenario.co",
+				"cesium-explorer-platform/src/app/scenario.collection.js"
+			],
+			[
+				"insert",
+				"cesium-explorer-platform/integration/docker/db-scripts/insert-test-users.sql"
+			],
+			[
+				"state.js",
+				"cesium-explorer-platform/src/app/state.js"
+			],
+			[
+				"sceanrio",
+				"cesium-explorer-platform/src/app/scenario.js"
+			],
+			[
+				"auth.js",
+				"cesium-explorer-platform/src/utils/network/auth.js"
+			],
+			[
+				"oath",
+				"cesium-explorer-platform/src/utils/network/oauth.js"
+			],
+			[
+				"webp",
+				"cesium-explorer/webpack.config.js"
+			],
+			[
+				"auth.aja",
+				"cesium-explorer-platform/src/utils/mixins/auth.ajax.config.js"
+			],
+			[
+				"bootstrap",
+				"cesium-explorer/server/config/bootstrap.js"
+			],
+			[
+				"tag.js",
+				"cesium-explorer-platform/src/app/tags/tag.js"
+			],
+			[
+				"layerpro",
+				"cesium-explorer-platform/src/app/layers/layer.props.js"
+			],
+			[
+				"czml.data",
+				"cesium-explorer-platform/src/utils/cesium/czml.data.source.js"
+			],
+			[
+				"workspace",
+				"cesium-explorer-platform/src/app/workspace.js"
+			],
+			[
+				"layer.",
+				"cesium-explorer-platform/src/app/layers/layer.props.js"
+			],
+			[
+				"distance",
+				"cesium-explorer-components/cesium-explorer-distance-legend/src/distance.legend.js"
+			],
+			[
+				"radio.j",
+				"cesium-explorer-platform/src/utils/radio.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "cesium.Car",
+		"selected_items":
+		[
+			[
+				"cesium.Car",
+				"Cesium.Cartesian2"
+			],
+			[
+				"cesium.C",
+				"Cesium.Cartesian2"
+			]
+		],
+		"width": 448.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"_vintageous_last_char_search_command": "vi_t",
+		"_vintageous_last_character_search": "<",
+		"_vintageous_reset_during_init": true,
+		"vintage":
+		{
+		}
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 338.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

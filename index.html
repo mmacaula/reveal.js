@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Reinvigorating your Backbone Application</title>
+    <title>Ampersand.js / Radio</title>
 
-    <meta name="description" content="Feel left behind with your Backbone application?  Don't!">
+    <meta name="description" content="Training on Ampersand.js">
     <meta name="author" content="Mike Macaulay">
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -41,7 +41,7 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
         <section>
-            <h2>Reinvigorating your Backbone Application</h2>
+            <h2>Ampersand.js / Radio</h2>
 
             <p>
                 <small>Created by <a href="http://michaelmac.org">Mike Macaulay</a> /
@@ -64,9 +64,508 @@
             </section>
         </section>
         <section>
-            <section>
-                <h2></h2>
-            </section>
+            <h2>Agenda</h2>
+            <ol>
+                <li>Discuss MVC and Backbone</li>
+                <li>Ampersand.js and where it fits</li>
+                <li>Through it all, decomposing the 'magic'</li>
+            </ol>
+
+        </section>
+        <section>
+            <h2>Model-View-Controller</h2>
+            <img src="lib/assets/backbone_mvc.png">
+        </section>
+        <section>
+            <h2>How do events work</h2>
+            <p>There are two types of events you'll run into</p>
+            <ul>
+                <li>DOM events</li>
+                <li>Backbone/Ampersand Events</li>
+            </ul>
+        </section>
+        <section>
+            <h2>DOM Events</h2>
+            <ul>
+                <li>Click</li>
+                <li>Focus</li>
+            </ul>
+            <p class="fragment">They bubble, are part of every browser</p>
+        </section>
+        <section>
+            <h2>Backbone Events</h2>
+            <p>Two types:</p>
+            <ul>
+                <li>Model events</li>
+                <li>Custom events</li>
+            </ul>
+
+        </section>
+        <section>
+            <h2>Backbone Events</h2>
+            <p>Two methods: 'on' and 'trigger'</p>
+            <pre><code class="js" data-trim>
+foo.on('eventName', function(data){
+    //called when eventName is triggered
+});
+myobject.trigger('eventName', eventData);
+
+            </code></pre>
+        </section>
+        <section>
+            <h2>Backbone Model</h2>
+            <p>An object that holds <i>observable</i> state</p>
+            <pre><code class="js" data-trim>
+var ModelClass = Backbone.Model.extend({
+    initialize(options){
+        // initalization code here
+    }
+});
+var myModel = new ModelClass({
+name: 'mike'
+});
+            </code></pre>
+        </section>
+        <section>
+            <h2>Using `get` and `set`</h2>
+            <pre><code class="js" data-trim>
+myModel.get('name') // returns 'mike'
+myModel.set('name', 'tim'); // sets name to 'tim'
+            </code></pre>
+        </section>
+        <section>
+            <h2>What does 'observable' mean anyway?</h2>
+            <p>Just combines 'events' with model state</p>
+<pre><code class="js" data-trim>
+myModel.on('change:name', function(){
+    console.log('name changed to: ', myModel.get('name'));
+});
+myModel.set('name', 'john'); // triggers change:name
+// and prints to console: name changed to: john
+</code></pre>
+
+        </section>
+        <section>
+            <h2>Also get previous state</h2>
+<pre><code class="js" data-trim>
+myModel.on('change:name', function(){
+    console.log('name changed from: ', myModel.previous('name'));
+});
+myModel.set('name', 'john'); // triggers change:name
+// and prints to console: name changed from: mike
+
+</code></pre>
+        </section>
+        <section>
+            <h2>There's no magic here:</h2>
+            <p>Backbone.Model Method Definition:</p>
+<pre><code class="js" data-trim>
+
+set: function(attr, value){
+    this.attrs[attr] = value;
+    this.trigger('change:' + attr, this);
+}
+get: function(attr){
+    return this.attrs[attr];
+}
+</code></pre>
+        </section>
+        <section>
+            <h2>I thought this was on Ampersand?</h2>
+            <p class="fragment">It is, but the concepts are all the same</p>
+        </section>
+        <section>
+            <h2>Backbone.js</h2>
+            <p>Backbone is a single library</p>
+            <p>Events, Models, Views, and a Router </p>
+        </section>
+        <section>
+            <h2>Ampersand.js</h2>
+            <p>Not a single library</p>
+            <p class="fragment">Each piece its own 'tiny' module</p>
+            <p class="fragment">Use only what you need</p>
+            <p class="fragment">but also so much more</p>
+        </section>
+        <section>
+            <h2>Javascript Properties</h2>
+            <p>ES5 feature (no IE8 support)</p>
+            <p>Best illustrated with an example</p>
+        </section>
+        <section>
+            <h2>Properties</h2>
+            <pre><code class="js" data-trim>
+var obj = {
+    get prop() {
+        return "Getter";
+    },
+    set prop(value) {
+        console.log("Setter: "+value);
+    }
+}
+obj.prop // returns 'Getter'
+obj.prop = 123;  // prints: 'Setter: 123'
+
+            </code></pre>
+        </section>
+        <section>
+            <h2>Annoyances with Backbone</h2>
+            <p>That 'get' and 'set' to do everything</p>
+            <p class="fragment">I've got an idea!</p>
+        </section>
+        <section>
+            <h2>Combine them!</h2>
+            <p>Define properties for everything that we care about</p>
+<pre><code class="js" data-trim>
+var BetterModelClass = Backbone.Model.extend({
+    get name(){
+        return this.attrs.name;
+    },
+    set name(newName){
+        this.attrs.name = newName;
+        this.trigger('change:name', this);
+    }
+})
+var betterModel = new BetterModelClass();
+betterModel.name = 'tim';
+// triggers 'change:name'
+</code></pre>
+        </section>
+        <section>
+            <h2>Ampersand State</h2>
+            <p>Backbone Model with Properties</p>
+        </section>
+        <section>
+            <h2>Example</h2>
+           <pre><code class="js" data-trim>
+var MyState = AmpersandState.extend({
+    props: {
+        name: 'string'
+    }
+});
+var model = new MyState({ name: 'mike'});
+model.name // returns mike
+model.name = 'tim' // triggers a change event
+            </code></pre>
+        </section>
+        <section>
+            <h2>Common Errors</h2>
+            <p class="fragment">Must define your 'props' beforehand</p>
+<pre><code class="js" data-trim>
+var DumbState = AmpersandState.extend({
+    // forgot to define props, or left one out!
+}});
+var model = new DumbState({name: mike});
+model.name // undefined!
+model.name = 'tim' // NO change event!!!
+model.name // return 'tim'
+
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Recap</h2>
+            <ul>
+                <li>Events - Core to Backbone/Ampersand Communication</li>
+                <li>Models (or State). Core of your app</li>
+            </ul>
+            <p class="fragment">We now have basic mechanisms to do MVVM</p>
+        </section>
+        <section>
+            <h2>Deeper into State </h2>
+            <p class="fragment">Let's begin with an example</p>
+<pre><code class="js" data-trim>
+var Person = AmpersandState.extend({
+    props: {
+        firstName: 'string',
+        lastName: 'string'
+    }
+});
+</code></pre>
+            <p class="fragment">How would we define a 'fullName' property?</p>
+
+        </section>
+        <section>
+            <h2>Ampersand State does this</h2>
+            <p class="fragment">But it can be confusing.</p>
+            <p class="fragment">So let's break it down like we did props</p>
+
+        </section>
+        <section>
+            <h2>A first attempt</h2>
+            <pre><code class="js" data-trim>
+var Person = AmpersandState.extend({
+    initialize: function(){
+        this.listenTo(this,'change:firstName change:lastName',
+           this.onChangeName);
+        Object.defineProperty(this,'fullName', {
+           get: function(){
+             return this.firstName + ' ' + this.lastName;
+           }
+        });
+    },
+    onChangeName(){
+        this.trigger('change:fullName', this);
+    }
+});
+var john = new Person({firstName: 'John', lastName: 'Smith'});
+john.fullName // "John Smith"
+
+            </code></pre>
+
+        </section>
+        <section>
+            <h2>A second attempt</h2>
+            <pre><code class="js " data-trim>
+setupDerivedProperty(property, dependencies, fn){
+    function onDependencyChange(model){
+           this.trigger('change:'+property, this);
+        }
+    }
+    dependencies.each((dependency) => {
+        this.listenTo(dependency, 'change:'+dependency,
+            onDependencyChange );
+    });
+    Object.defineProperty(this,property, {
+       get: function(){
+         return fn();
+       }
+    });
+}
+            </code></pre>
+
+        </section>
+        <section>
+            <h2>Second Attempt</h2>
+            <pre><code class="js" data-trim>
+var Person = AmpersandState.extend({
+    initialize: function(){
+        var dependencies = ['firstName','lastName']
+        setupDerivedProperty('fullName', dependencies,
+            function(){
+                return this.firstName + ' ' + this.lastName;
+            }
+        );
+    }
+})
+            </code></pre>
+        </section>
+        <section>
+            <h2>Ampersand State Derived Properties</h2>
+            <pre><code class="js" data-trim>
+var Person = AmpersandState.extend({
+    props: {
+        firstName: 'string',
+        lastName: 'string'
+    },
+    derived: {
+        fullName: {
+            deps: ['firstName', 'lastName'],
+            fn :function(){
+                return this.firstName + ' ' + this.lastName;
+            }
+        }
+    }
+})
+            </code></pre>
+        </section>
+        <section>
+            <h2>Derived Properties</h2>
+            <p>They are also cached</p>
+            <p>Only change events when property changes</p>
+        </section>
+        <section>
+            <h2>Again, no Magic</h2>
+            <p>But again, one important note</p>
+            <strong class="fragment">Any dependenceis need to be observable properties!</strong>
+            <p class="fragment">This will be a recurring theme!</p>
+        </section>
+        <section>
+            <h2>Model Relationships</h2>
+            <pre><code class="js" data-trim>
+var personJson = {
+    firstName: 'Mike',
+    lastName: 'Macaulay',
+    hat: {
+        color: 'green',
+        size: 'large'
+    }
+};
+            </code></pre>
+        </section>
+        <section>
+            <h2>Children</h2>
+            <pre><code class="js" data-trim>
+var HatClass = AmpersandState.extend({
+    props: {
+        color: 'string',
+        size: 'string'
+    }
+});
+var Person = AmpersandState.extend({
+    props // same as before
+    children: {
+        hat: HatClass
+    }
+});
+var mike = new Person(personJson);
+            </code></pre>
+            <p class="fragment">These are one-to-one</p>
+        </section>
+        <section>
+            <h2>Children bubble events</h2>
+            <pre><code class="js" data-trim>
+mike.on('change:hat.color', function(){
+    console.log("hat color changed");
+});
+mike.hat.color = 'blue';  // triggers change event
+            </code></pre>
+
+        </section>
+        <section>
+            <h2>Common mistakes with children</h2>
+            <p>Don't do this</p>
+            <pre><code class="js" data-trim>
+mike.hat = new HatClass({
+    color: 'black',
+    size: 'medium'
+});  // breaks the relationship
+// do this:
+mike.set('hat',{
+    color: 'black',
+    size: 'medium'
+});
+            </code></pre>
+        </section>
+        <section>
+            <h2>Collections</h2>
+            <p>One to Many relationships</p>
+            <p>Let's add a 'Pet' model</p>
+            <pre><code class="js" data-trim>
+var PetClass = AmpersandState.extend({
+    props: {
+        name: 'string'
+    }
+});
+var PetCollection = AmpersandCollection.extend({
+    model: PetClass
+});
+
+            </code></pre>
+        </section>
+        <section>
+            <h2>Collections</h2>
+            <pre><code class="js" data-trim>
+var Person = AmpersandState.extend({
+    props: //same as before
+    children: //hat
+    collections: {
+        pets: PetCollection
+    }
+});
+var mike = new Person({
+    firstName: 'mike',
+    pets: [
+        {name: 'fido'},
+        {name: 'fred'}
+    ]
+});
+            </code></pre>
+        </section>
+        <section>
+            <h2>Model-View-Controller</h2>
+            <img src="lib/assets/backbone_mvc.png">
+            <p class="fragment">What's difference between state and model?</p>
+        </section>
+        <section>
+            <h2>State Vs Model</h2>
+            <p>Put simply:</p>
+            <p>A Model is just a state with 'save' and 'destroy' method that sync with the server</p>
+        </section>
+        <section>
+            <h2>Model</h2>
+            <pre><code class="js" data-trim>
+var Person = AmpersandModel.extend({
+    props // as before
+    urlRoot: '/api/people'
+});
+var mike = new Person({firstName: 'mike'}).save();
+// triggers a POST request to the server
+            </code></pre>
+        </section>
+        <section>
+            <h2>Or fetch from the server</h2>
+            <pre><code class="js" data-trim>
+var People = AmpersandRestCollection.extend({
+    model: Person,
+    url: '/api/people'
+});
+new People().fetch(); // trigers a 'GET'
+            </code></pre>
+        </section>
+        <section>
+            <h2>break</h2>
+            <p>5 minute break</p>
+            <p>Questions?</p>
+        </section>
+        <section>
+            <h2>Next up: Views</h2>
+            <img src="lib/assets/backbone_mvc.png">
+        </section>
+        <section>
+            <h2>A View's Job</h2>
+            <ul>
+                <li>Take a Model</li>
+                <li>Build a 'view' of it</li>
+                <li>Keep view in sync with model</li>
+            </ul>
+        </section>
+        <section>
+            <h2>View Rendering</h2>
+            <p>Usually boils down to:</p>
+            <ul>
+                <li>Take a template of HTML</li>
+                <li>Send model to template to get HTML</li>
+                <li>Put HTML in document</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Ampersand View</h2>
+            <p>From bottom up</p>
+            <pre><code class="js" data-trim>
+var PersonView = AmpersandView.extend({
+    render: function(){
+        this.el = Document.createElement('div');
+        this.el.textContent = this.model.firstName;
+        return this;
+    }
+});
+var view = new PersonView({
+    model: mike
+});
+view.render();
+view.el // < div>mike < /div>'
+document.body.appendChild(view.el);  // our view is live
+
+
+            </code></pre>
+
+        </section>
+        <section>
+            <h2>Next steps: a Template</h2>
+<pre><code class="js" data-trim>
+var PersonView = AmpersandView.extend({
+    template : '< div>< /div>'
+    render: function(){
+        this.el = Document.createElement('div');
+        this.el.innerHTML = this.template;
+        this.el.query
+        return this;
+    }
+});
+           </code></pre>
+
+        </section>
+
     </div>
 
 </div>

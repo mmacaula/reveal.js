@@ -1,0 +1,137 @@
+Introduction to Ampersand.js and Radio:
+
+Budget for talks:
+2 3 hour talks = 6
+1 1 hour talk = 5 hours
+leaves 24 for prep work
+
+5 hours practice total for practice  = 19 hours of prep
+
+9.5 hours on each talk for prep work
+
+
+
+
+beginning at 3pm
+stop at 3:20
+
+
+
+
+Ampersand.js and Radio
+most spent on ampersand js,
+30 minutes on radio I'm guessing
+
+Ampersand.js:
+
+Begin with an introduction to Model ViewModel View paradigm.
+ Discuss flow through the system.  Models are changed, views listen for changes and update DOM accordingly.  Views listen for input from the dom, make changes to the models, which begins process again
+ Discuss viewmodels and how they fit into the picture.  The concept of "view state" and what it means
+ Diagrams will be very helpful here
+
+Talk about Backbone, the pieces it gives us to solve problems:
+    Line it up with the diagram if you can.
+    The piece underlying it all: eventing.
+    Discuss how the "eventing" mechanism works.
+        Differentiate between DOM eventing and Backbone eventing.
+    Talk about Backbone Models:  Combination of an get and set and eventing:
+        Get and Set do simple basic work, even dive into code if you want  (or do pseudo code)
+
+    So why are we talking about backbone?  Foundation of Ampersand
+        All the 'magic' of ampersand is really just backbone with some syntactic sugar.
+    Discuss the idea of javascript properties:
+        Allow you to define getters and setters while still having the code look like you're simply setting properties
+        Define a simple one:  on access it just logs to the console
+    Finally get to our first ampersand class, ampersand state:
+        Ampersand state fundamentally does one thing: It takes the get and set of backbone models and creates javascript properties for them.
+        When i talked about properties, you end up defining them per property, hence we get why ampersand prefers you declare them as "props" beforehand.
+        This is partly why, but they are also helping us document our models via code.  Older backbone code didnt' have this so we had to put it in comments
+        Because of this you can also do nice things like property validation
+    So recap:  These two building blocks give us a solid eventing mechanism and a place to store data.  That data is 'evented', meaning changes to that data trigger events automatically.  So we now havve some basic mechanisms to do MVVM.
+    Get into an example state object, borrow from the ampersand state tests or something.
+        Person perhaps:  attributes like hair
+        Create and set some of those
+        (is there a good place to have some ampersand examples running?  requirebin?)
+        add some events, use on, and off
+        use examples of on then show how it will keep sticking around
+            Introduce listenTo, show how it inverts dependencies and sets up maintenance
+    Keep talking about the State object, next up: Derived Properties
+        First talk about how they work under the hood:
+            setupDerivedProperty(property, dependencies, fn){
+                var value;
+                function onDependencyChange(model){
+                    var newDerivedProperty = fn();
+                    if(value !== newDerivedProperty){
+                        this.trigger('change:'+property, newDerivedProperty);
+                    }
+                }
+                dependencies.each((dependency) => {
+                    this.listenTo(dependency, 'change',onDependencyChange )
+                })
+            }
+        Show how to use them
+        Talk about some nice features like caching
+        Talk about the caveats:  You can only watch observable properties (because we need to watch them for changes!  (Remember this point we'll come back to it))
+    Next feature: Children and Collections
+        Many times our models have relationships to other models.  A lot of times those relationships are either one to one, or one to many
+            Ampersand handles one-to-one with the 'children' property and one-to-many with the 'collection' property.
+            Children have their events bubble up.
+            This relationship is setup to be wholly owned by the parent object.  ** this is important and a common source of mistakes
+                As such, expect to see this being used when you get a nested JSON structure back from a API call.  Person: hat: {}.
+                You only want to use these attributes where the parent object 'owns' the child object completely.
+                Example, person and hat syntax.
+                Show example where setting hat as a prop causes errors
+            Introduce the 'state' attribute type to handle this.
+    Ok, so we have this thing that can hold state and trigger events when that state changes. Go back to our MVVM model
+    Why do we call it ampersand-state?
+    Go back to diagram, talk about how models ultimately have representations on the server.  That's what ampersand models have, a set of methods that allow one to sync your state with the server.
+        GET, POST, PUT, DELETE
+Next Up, Ampersand Views:
+    A view's job:
+        take a model and build a 'view' of it.  Most of the time, this 'view' is in the DOM (HTML)
+            This process is usually straight-forward:
+                Find a template somewhere,
+                send that template the model
+                create a piece of DOM and (optionally) put it in the document model
+
+        keep that view in sync with changes from the model
+            Break down this process manually first, using listenTo and updating text content.
+            Talk about how ultimately this process is repeatable, and that's exactly what bindings do.
+                Key thing is that the properties have to be observable.  If they are not, then your bindings will not work.
+        optional (take user input from the DOM) and put that in the system.
+    Other view features:
+        Sometimes views have some 'state' of their own.  Views extend from ampersand-state, meaning you can set 'props' on them.
+Ampersandjs Collection
+    talk about ability to add or remove models as json or real models
+    event bubbling
+
+Collection Views:
+
+Router:
+
+
+
+Radio:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
