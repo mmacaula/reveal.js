@@ -122,7 +122,7 @@ var ModelClass = Backbone.Model.extend({
     }
 });
 var myModel = new ModelClass({
-name: 'mike'
+    name: 'mike'
 });
             </code></pre>
         </section>
@@ -376,7 +376,7 @@ var Person = AmpersandState.extend({
         <section>
             <h2>Again, no Magic</h2>
             <p>But again, one important note</p>
-            <strong class="fragment">Any dependenceis need to be observable properties!</strong>
+            <strong class="fragment">Any dependencies need to be observable properties!</strong>
             <p class="fragment">This will be a recurring theme!</p>
         </section>
         <section>
@@ -534,7 +534,7 @@ new People().fetch(); // trigers a 'GET'
             <pre><code class="js" data-trim>
 var PersonView = AmpersandView.extend({
     render: function(){
-        this.el = Document.createElement('div');
+        this.el = document.createElement('div');
         this.el.textContent = this.model.firstName;
         return this;
     }
@@ -554,20 +554,306 @@ document.body.appendChild(view.el);  // our view is live
             <h2>Next steps: a Template</h2>
 <pre><code class="js" data-trim>
 var PersonView = AmpersandView.extend({
-    template : '< div>< /div>'
+    template : '< div class="name">< /div>'
     render: function(){
-        this.el = Document.createElement('div');
+        this.el = document.createElement('div');
         this.el.innerHTML = this.template;
-        this.el.query
+        this.el.querySelector('.name').textContent = this.model.name;
         return this;
     }
 });
            </code></pre>
 
         </section>
+        <section>
+            <h2>Even better</h2>
+            <pre><code class="js" data-trim>
+var PersonView = AmpersandView.extend({
+    template : function(model){
+        return '< div class="name">' + model.name + '< /div>';
+    }
+    render: function(){
+        this.el = document.createElement('div');
+        this.el.innerHTML = this.template(model);
+        return this;
+    }
+});
+            </code></pre>
+        </section>
+        <section>
+            <h2>Introducing Handlebars templates</h2>
+<pre><code class="html" data-trim>
+<div class="person">
+  <h1>{{name}}</h1>
+</div>
+</code></pre>
+<p class="fragment">Get's translated into a function</p>
+<pre class="fragment"><code class="js" data-trim>
+var templateFunction = Handlebars.compile(htmlTemplateAsString);
+var html = templateFunction({name: 'Mike'});
+
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Better View</h2>
+            <pre><code class="js" data-trim>
+var PersonView = AmpersandView.extend({
+    template : require('path.to.handlebars.function'),
+    render: function(){
+        this.el = document.createElement('div');
+        this.el.innerHTML = this.template(model);
+        return this;
+    }
+});
+            </code></pre>
+            <p class="fragment">Did anyone notice that we have an extra 'div'?</p>
+        </section>
+        <section>
+            <h2>Removing the div</h2>
+            <p>It's actually harder (and a lot of code)</p>
+            <p class="fragment">So we use a library</p>
+            <pre class="fragment"><code class="js" data-trim>
+var PersonView = AmpersandView.extend({
+    template : require('path.to.handlebars.function'),
+    createHTMLfromString: function(str){
+        // transform string into DOM elements
+        return HTML
+    },
+    render: function(){
+        var htmlString = this.template(model);
+        this.el = this.createHTMLfromString(htmlString);
+        return this;
+    }
+});
+            </code></pre>
+        </section>
+        <section>
+            <p>renderWithTemplate</p>
+<pre><code class="js" data-trim>
+var PersonView = AmpersandView.extend({
+    template : require('path.to.handlebars.function'),
+    render: function(){
+        return renderWithTemplate(this.model);
+    }
+});
+</code></pre>
+        </section>
+        <section>
+            <h2>Interacting with the DOM</h2>
+            <img src="lib/assets/backbone_mvc.png">
+            <p class="fragment">How do we keep the view up to date?</p>
+        </section>
+
+        <section>
+            <h2>Dynamic Views</h2>
+<pre><code class="js" data-trim>
+ var PersonView = AmpersandView.extend({
+    initialize: function(){
+        //model is automatically assigned
+        this.model.listenTo('change:name', this.onNameChange, this);
+    },
+    onNameChange: function(){
+        var newName = this.model.name;
+        this.el.querySelector('h1').textContent = newName;
+    }
+});
+</code></pre>
+            <p class="fragment">This is a very repeatable pattern</p>
+            <ul>
+                <li class="fragment">ListenTo Something</li>
+                <li class="fragment">Update piece of DOM</li>
+                <li class="fragment">Update class, text, attr</li>
+            </ul>
+
+        </section>
+        <section>
+            <h2>Dynamic Views (2)</h2>
+            <pre><code class="js" data-trim>
+ var PersonView = AmpersandView.extend({
+    bindings : {
+        'model.name': {
+            type: 'text',
+            selector : 'h1'
+        }
+    }
+});
+            </code></pre>
+            <p class="fragment">These are known as Ampersand DOM bindings</p>
+            <p class="fragment">Again, no magic, just configuration</p>
+
+        </section>
+        <section>
+            <h2>View State</h2>
+            <p>Sometimes necessary</p>
+            <p>Ampersand Views extend from 'state'</p>
+<pre><code class="js" data-trim>
+ var PersonView = AmpersandView.extend({
+    props : {
+        selected: 'boolean',
+        expanded: 'boolean'
+    }
+});
+</code></pre>
+
+        </section>
+        <section>
+            <h2>View State</h2>
+            <p>These can also be bound</p>
+<pre><code class="js" data-trim>
+ var PersonView = AmpersandView.extend({
+    props : {
+        selected: 'boolean',
+        expanded: 'boolean'
+    },
+    bindings: {
+        'selected': {
+            type: 'class',
+            name: 'is-selected',
+            selector: 'h1'
+        }
+    }
+});
+</code></pre>
+
+        </section>
+
+        <section>
+            <h2>What's wrong here?</h2>
+<pre><code class="js" data-trim>
+ var PersonView = AmpersandView.extend({
+    initialize: function(){
+        this.myProp = false;
+    },
+    bindings : {
+        'myProp': {
+            type: 'text',
+            selector : 'h1'
+        }
+    }
+});
+</code></pre>
+            <p class="fragment">Bindings need to be <i>observable</i> properties</p>
+        </section>
+
+
+        <section>
+            <h2>DOM Events</h2>
+            <p>Not to be confused with Backbone/Ampersand Events</p>
+            <p>Things like 'click', 'focusIn', 'mouseover', etc</p>
+        </section>
+        <section>
+            <h2>Events</h2>
+            <pre><code class="js" data-trim>
+ var PersonView = AmpersandView.extend({
+    template : require('path.to.handlebars.function'),
+    events: {
+        'click .entry' : 'onEntryClicked'
+    },
+    render: function(){
+        return renderWithTemplate(this.model);
+    },
+    onEntryClicked: function(domEvent){
+        console.log("I was clicked: ");
+    }
+});
+            </code></pre>
+
+        </section>
+
+        <section>
+            <h2>Using data-hook</h2>
+<pre><code class="html" data-trim>
+<div class="person">
+  <h1></h1>
+</div>
+</code></pre>
+<pre><code class="js" data-trim>
+ var PersonView = AmpersandView.extend({
+    bindings : {
+        'model.name': {
+            type: 'text',
+            selector : 'h1'
+        }
+    }
+});
+</code></pre>
+            <p class="fragment">Customer feedback:  name too large</p>
+            <p class="fragment">h1 should be h2</p>
+        </section>
+        <section>
+            <h2>Data-hook</h2>
+            <p>Maintenance issue</p>
+            <p>css class names are also problematic</p>
+            <p class="fragment">Solution: data-hook attribute</p>
+        </section>
+        <section>
+            <h2>Data-hook</h2>
+<pre><code class="html" data-trim>
+<div class="person">
+  <h1 data-hook="name"></h1>
+</div>
+</code></pre>
+<pre><code class="js" data-trim>
+ var PersonView = AmpersandView.extend({
+    bindings : {
+        'model.name': {
+            type: 'text',
+            hook : 'name'
+        }
+    }
+});
+    </code></pre>
+        </section>
+        <section>
+            <h2>Equivalent</h2>
+<pre><code class="js" data-trim>
+'model.name': {
+    type: 'text',
+    hook : 'name'
+}
+'model.name': {
+    type: 'text',
+    selector : '[data-hook="name"]'
+}
+</code></pre>
+        </section>
+
+        <section>
+            <img src="lib/assets/backbone_mvc.png">
+            <p class="fragment">How does this scale?</p>
+        </section>
+
+        <section>
+            <h2>Complexity</h2>
+            <img src="lib/assets/component-hierarchy.png" height="463" width="700"/>
+        </section>
+        <section>
+            <h2>Managing Complexity</h2>
+            <ul>
+                <li>Models</li>
+                <li>Views</li>
+                <li>Communication between items</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Complexity</h2>
+            <p>Unfortunately, no single best answer</p>
+            <p class="fragment">It depends</p>
+        </section>
+        <section>
+            <h2>Mike's rules of Ampersand Communication</h2>
+            <h2 class="fragment">MRAC</h2>
+            <ul>
+                <li class="fragment">Model Events</li>
+                <li class="fragment">View Events</li>
+                <li class="fragment">Radio Events</li>
+            </ul>
+        </section>
+
+
 
     </div>
-
 </div>
 
 <script src="lib/js/head.min.js"></script>
