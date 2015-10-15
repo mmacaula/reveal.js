@@ -108,10 +108,25 @@
 foo.on('eventName', function(data){
     //called when eventName is triggered
 });
-myobject.trigger('eventName', eventData);
+foo.trigger('eventName', eventData);
 
+// later on when you no longer need it
+foo.off('eventName');  // unsets ALL subcriptions for eventName
             </code></pre>
         </section>
+        <section>
+            <h2>Listen To</h2>
+<pre><code class="js" data-trim>
+view.listenTo(model,'eventName', function(data){
+    // called with howdy as 'data'
+});
+model.trigger('eventName', 'howdy');
+
+// later on when you no longer need it
+view.stopListening();
+</code></pre>
+        </section>
+
         <section>
             <h2>Backbone Model</h2>
             <p>An object that holds <i>observable</i> state</p>
@@ -253,7 +268,7 @@ model.name = 'tim' // triggers a change event
 <pre><code class="js" data-trim>
 var DumbState = AmpersandState.extend({
     // forgot to define props, or left one out!
-}});
+});
 var model = new DumbState({name: mike});
 model.name // undefined!
 model.name = 'tim' // NO change event!!!
@@ -303,7 +318,7 @@ var Person = AmpersandState.extend({
            }
         });
     },
-    onChangeName(){
+    onChangeName: function(){
         this.trigger('change:fullName', this);
     }
 });
@@ -316,13 +331,14 @@ john.fullName // "John Smith"
         <section>
             <h2>A second attempt</h2>
             <pre><code class="js " data-trim>
-setupDerivedProperty(property, dependencies, fn){
+setupDerivedProperty: function(property, dependencies, fn){
     function onDependencyChange(model){
            this.trigger('change:'+property, this);
         }
     }
-    dependencies.each((dependency) => {
-        this.listenTo(dependency, 'change:'+dependency,
+    var model = this;
+    dependencies.forEach( function(dependency) {
+        model.listenTo(dependency, 'change:'+dependency,
             onDependencyChange );
     });
     Object.defineProperty(this,property, {
@@ -423,12 +439,13 @@ mike.hat.color = 'blue';  // triggers change event
         </section>
         <section>
             <h2>Common mistakes with children</h2>
-            <p>Don't do this</p>
             <pre><code class="js" data-trim>
+// dont do this:
 mike.hat = new HatClass({
     color: 'black',
     size: 'medium'
 });  // breaks the relationship
+
 // do this:
 mike.set('hat',{
     color: 'black',
@@ -733,7 +750,7 @@ var PersonView = AmpersandView.extend({
     }
 });
 </code></pre>
-            <p class="fragment">Bindings need to be <i>observable</i> properties</p>
+            <p class="fragment">Binding dependencies need to be <i>observable</i> properties</p>
         </section>
 
 
@@ -847,11 +864,152 @@ var PersonView = AmpersandView.extend({
             <ul>
                 <li class="fragment">Model Events</li>
                 <li class="fragment">View Events</li>
+                <li class="fragment">DOM Events</li>
                 <li class="fragment">Radio Events</li>
             </ul>
         </section>
+        <section>
+            <h2>MRAC</h2>
+            <p>Model Events</p>
+            <p>Most app state is model state, so just update your model</p>
+        </section>
+        <section>
+            <h2>MRAC</h2>
+            <p>View Events</p>
+            <p class="fragment">Views extend from state, they can trigger events</p>
+            <pre class="fragment"><code class="js" data-trim>
+//some view
+render: function(){
+    this.renderWithTemplate(this);
+    this.subview = this.renderSubview(
+        new Subview({model:this.model}),
+        this.queryByHook('container'));
+    this.listenTo(subView,'specialEvent', this.onSpecialEvent);
+}
+            </code></pre>
+        </section>
+        <section>
+            <h2>MRAC</h2>
+            <p>DOM Events</p>
+            <p class="fragment">DOM Events are powerful, use them if possible</p>
+            <p class="fragment">Only issue is mapping them back to your model</p>
+            <pre class="fragment"><code class="js" data-trim>
+ //some view
+ events: {
+    'click li' : onClick
+ }
+ render: function(){
+    this.renderWithTemplate(this); // renders < ul> elements
+    this.subview = this.renderCollection(
+        this.collection,
+        ItemView,  // each renders a 'li'
+        this.queryByHook('container'));
+ },
+ onClick: function(event){
+    //event.target is the DOM element that was clicked;
+ }
+            </code></pre>
+        </section>
+        <section>
+            <h2>MRAC</h2>
+            <p>Radio Events</p>
+            <p class="fragment">What is Radio???</p>
+        </section>
+        <section>
+            <h2>Break?</h2>
 
+        </section>
+        <section>
+            <h2>Backbone.Radio</h2>
+            <p class="fragment">Additional Messaging Patterns</p>
+            <ul>
+                <li class="fragment">Channels</li>
+                <li class="fragment">Request/Reply</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Radio Channels</h2>
+            <p class="fragment">Kind of a global event bus</p>
+<pre><code class="js" data-trim>
+// first dial into Channel:
+var userChannel = Radio.channel('user');
+userChannel.on('some:event', function() {
+  console.log('An event has happened!');
+});
 
+// or
+Radio.on('user', 'some:event', function(){
+    console.log('An event has happened!');
+});
+</code></pre>
+        </section>
+        <section>
+            <h2>Radio Channels</h2>
+            <p class="fragment">Best used when user clicks a button that is an application level command</p>
+        </section>
+        <section>
+            <h2>Radio Request</h2>
+            <p class="fragment">Application Dependencies needed to do work</p>
+            <p class="fragment">Snapshots are good example</p>
+<pre class="fragment"><code class="js" data-trim>
+TakeSnapshotView = AmpersandView.extend({
+    template: '< button> Take Snapshot!< /button>',
+    events: {
+        'click' : 'takeSnapshot'
+    },
+    takeSnapshot: function(){
+        // what do we do here??
+    }
+})
+</code></pre>
+        </section>
+        <section>
+            <h2>Options</h2>
+            <p>Assume we have a snapshot service</p>
+            <ul>
+                <li class="fragment">Do a global lookup: window.app.services.snapshotService.takeSnapshot()</li>
+                <li class="fragment">Dependency Injection</li>
+                <li class="fragment">Radio Request</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Request registration</h2>
+<pre><code class="js" data-trim>
+// snapshot Service
+initialize: function(){
+    Radio.reply('snapshotService', 'take:snapshot',
+        this.captureSnapshot, this);
+}
+captureSnapshot: function(){
+    var snapshot = // take snapshot;
+    return snapshot;
+}
+
+// our snapshot button
+takeSnapshot: function(){
+    var snapshot = Radio.request('snapshotService','take:snapshot');
+    this.model.snapshots.add(snapshot);
+    snapshot.save();
+}
+            </code></pre>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>Introduction to Ampersand and Radio</p>
+            <p>MRAC</p>
+
+        </section>
+        <section>
+            <h2>Next up:</h2>
+            <p>Promises!</p>
+
+        </section>
+        <section>
+            <h2>Questions?</h2>
+            <p>What would you like to know more about?</p>
+        </section>
 
     </div>
 </div>

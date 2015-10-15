@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"creat",
+				"createHTMLfromString"
+			],
+			[
 				"Amper",
 				"AmpersandCollection"
 			],
@@ -375,7 +379,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 17754,
+				"buffer_size": 25733,
 				"line_ending": "Unix"
 			}
 		},
@@ -383,7 +387,7 @@
 			"file": "Introduction to Ampersand.js and Radio:",
 			"settings":
 			{
-				"buffer_size": 6224,
+				"buffer_size": 6239,
 				"line_ending": "Unix"
 			}
 		}
@@ -804,9 +808,15 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"img",
+			"collection",
+			"depend",
+			"dependencies",
+			"img",
+			"Document",
 			"PATH",
 			"ulimit",
 			"ce-dropdown",
@@ -928,13 +938,7 @@
 			"ul",
 			"button-group",
 			"grant_type",
-			"btoa",
-			"_ajax",
-			"login",
-			"links",
-			"192.168.99.100",
-			"workspace",
-			"workspaceId"
+			"btoa"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -958,7 +962,7 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": true,
+		"whole_word": false,
 		"wrap": true
 	},
 	"folders":
@@ -979,15 +983,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17754,
+						"buffer_size": 25733,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								16230,
-								16230
+								23405,
+								23405
 							]
 						],
 						"settings":
@@ -1001,10 +1005,10 @@
 							"translate_tabs_to_spaces": true,
 							"vintage":
 							{
-								"_vintageous_glue_until_normal_mode": true,
+								"_vintageous_glue_until_normal_mode": false,
 								"action": null,
 								"action_count": "",
-								"mode": "mode_insert",
+								"mode": "mode_normal",
 								"motion": null,
 								"motion_count": "",
 								"must_capture_register_name": false,
@@ -1020,270 +1024,15 @@
 											"commands":
 											[
 												[
-													"expand_abbreviation_by_tab",
-													null
-												],
-												[
-													"expand_abbreviation_by_tab",
-													null
-												],
-												[
-													"expand_abbreviation_by_tab",
-													null
-												],
-												[
 													"insert",
 													{
-														"characters": "A"
-													}
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"insert",
-													{
-														"characters": "p"
-													}
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"copy",
-													null
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"insert",
-													{
-														"characters": "cod"
-													}
-												],
-												[
-													"insert_best_completion",
-													{
-														"default": "	",
-														"exact": false
-													}
-												],
-												[
-													"next_field",
-													null
-												],
-												[
-													"move_to",
-													{
-														"to": "bol"
-													}
-												],
-												[
-													"paste_and_indent",
-													null
-												],
-												[
-													"insert",
-													{
-														"characters": "\nte"
-													}
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"expand_abbreviation_by_tab",
-													null
-												],
-												[
-													"insert",
-													{
-														"characters": "template"
+														"characters": "Radio"
 													}
 												],
 												[
 													"insert",
 													{
-														"characters": " :"
-													}
-												],
-												[
-													"insert",
-													{
-														"characters": " "
-													}
-												],
-												[
-													"insert_snippet",
-													{
-														"contents": "'$0'"
-													}
-												],
-												[
-													"insert",
-													{
-														"characters": "<div"
-													}
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"insert",
-													{
-														"characters": " v"
-													}
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"insert",
-													{
-														"characters": "div><"
-													}
-												],
-												[
-													"tag_close_tag_on_slash",
-													null
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"left_delete",
-													null
-												],
-												[
-													"insert",
-													{
-														"characters": " /div"
-													}
-												],
-												[
-													"move",
-													{
-														"by": "characters",
-														"forward": true
-													}
-												],
-												[
-													"move",
-													{
-														"by": "characters",
-														"forward": false
-													}
-												],
-												[
-													"insert",
-													{
-														"characters": ">"
-													}
-												],
-												[
-													"move",
-													{
-														"by": "characters",
-														"forward": false
-													}
-												],
-												[
-													"move",
-													{
-														"by": "characters",
-														"forward": false
-													}
-												],
-												[
-													"move",
-													{
-														"by": "characters",
-														"forward": false
-													}
-												],
-												[
-													"move",
-													{
-														"by": "characters",
-														"forward": false
-													}
-												],
-												[
-													"move",
-													{
-														"by": "characters",
-														"forward": false
-													}
-												],
-												[
-													"move",
-													{
-														"by": "characters",
-														"forward": false
-													}
-												],
-												[
-													"move",
-													{
-														"by": "lines",
-														"forward": true
-													}
-												],
-												[
-													"move",
-													{
-														"by": "lines",
-														"forward": true
-													}
-												],
-												[
-													"move",
-													{
-														"by": "lines",
-														"forward": true
-													}
-												],
-												[
-													"move",
-													{
-														"by": "lines",
-														"forward": false
+														"characters": " Events"
 													}
 												]
 											]
@@ -1293,11 +1042,11 @@
 									null
 								],
 								"sequence": "",
-								"xpos": 27
+								"xpos": 15
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 11245.0,
+						"translation.y": 18077.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1306,18 +1055,18 @@
 				{
 					"buffer": 1,
 					"file": "Introduction to Ampersand.js and Radio:",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6224,
+						"buffer_size": 6239,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5421,
-								5421
+								6197,
+								6197
 							]
 						],
 						"settings":
@@ -1327,20 +1076,22 @@
 							"translate_tabs_to_spaces": true,
 							"vintage":
 							{
+								"_vintageous_glue_until_normal_mode": false,
 								"action": null,
 								"action_count": "",
 								"mode": "mode_normal",
 								"motion": null,
 								"motion_count": "",
 								"must_capture_register_name": false,
+								"normal_insert_count": "1",
 								"partial_sequence": "",
 								"register": "\"",
 								"sequence": "",
-								"xpos": 24
+								"xpos": 0
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 3776.0,
+						"translation.y": 2430.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1351,7 +1102,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 29.0
+		"height": 34.0
 	},
 	"input":
 	{
