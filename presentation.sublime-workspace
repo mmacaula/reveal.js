@@ -379,7 +379,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 25733,
+				"buffer_size": 30558,
 				"line_ending": "Unix"
 			}
 		},
@@ -387,7 +387,7 @@
 			"file": "Introduction to Ampersand.js and Radio:",
 			"settings":
 			{
-				"buffer_size": 6239,
+				"buffer_size": 6381,
 				"line_ending": "Unix"
 			}
 		}
@@ -808,9 +808,10 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"bindings need",
 			"img",
 			"collection",
 			"depend",
@@ -937,8 +938,7 @@
 			"ul ",
 			"ul",
 			"button-group",
-			"grant_type",
-			"btoa"
+			"grant_type"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -974,7 +974,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -983,21 +983,21 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 25733,
+						"buffer_size": 30558,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								23405,
-								23405
+								28867,
+								28867
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"expand_region_settings": "{\"stack\": [{\"start\": 11053, \"end\": 11056}, {\"start\": 11053, \"end\": 11086}], \"hash\": \"d59ca2a6b805b1ede53b22136575fa80\"}",
+							"expand_region_settings": "{\"hash\": \"e9aceca57d960e8e2629d547f45d3779\", \"stack\": [{\"end\": 27977, \"start\": 27973}, {\"end\": 27977, \"start\": 27949}]}",
 							"highlight_line": true,
 							"is_xml": false,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
@@ -1017,39 +1017,20 @@
 								"register": "\"",
 								"repeat_data":
 								[
-									"native",
-									[
-										"sequence",
-										{
-											"commands":
-											[
-												[
-													"insert",
-													{
-														"characters": "Radio"
-													}
-												],
-												[
-													"insert",
-													{
-														"characters": " Events"
-													}
-												]
-											]
-										}
-									],
-									"mode_insert",
+									"vi",
+									"dd",
+									"mode_internal_normal",
 									null
 								],
 								"sequence": "",
-								"xpos": 15
+								"xpos": 30
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 18077.0,
+						"translation.y": 21681.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1058,15 +1039,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6239,
+						"buffer_size": 6381,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6197,
-								6197
+								271,
+								271
 							]
 						],
 						"settings":
@@ -1078,7 +1059,7 @@
 							{
 								"_vintageous_glue_until_normal_mode": false,
 								"action": null,
-								"action_count": "",
+								"action_count": "2",
 								"mode": "mode_normal",
 								"motion": null,
 								"motion_count": "",
@@ -1086,15 +1067,22 @@
 								"normal_insert_count": "1",
 								"partial_sequence": "",
 								"register": "\"",
-								"sequence": "",
-								"xpos": 0
+								"repeat_data":
+								[
+									"vi",
+									"r3",
+									"mode_normal",
+									null
+								],
+								"sequence": "2",
+								"xpos": 1
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 2430.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
