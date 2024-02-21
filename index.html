@@ -66,40 +66,11 @@
 				<section>
 					<h1>Navigating the Promised Land</h1>
 					<p>Promises in Javascript</p>
+                    <p>And Async / Await</p>
 					<p>
 						<small>Created by <a href="http://github.com/mmacaula">Mike Macaulay</a> / <a href="http://twitter.com/mmacaula">@mmacaula</a></small>
 					</p>
 				</section>
-                <section>
-                    <img class="stretch" src="lib/kcdc_sponsors.png">
-                </section>
-
-				<section>
-                    <section>
-
-                        <h2>Who Am I?</h2>
-                        <ul>
-                            <li>Java for about 8 years out of college</li>
-                            <li>Moved to Omaha 3 years ago</li>
-                            <li>Web / Javascript developer ever since</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Who I work for</h2>
-                        <img src="lib/aviture-logo.png">
-                    </section>
-				</section>
-                <section>
-                    <h2>Agenda</h2>
-                    <ul>
-                        <li>Why do I care?</li>
-                        <li>Introduction to promises</li>
-                        <li>Why they're useful</li>
-                        <li>How you can use them</li>
-                        <li>Advanced uses</li>
-                        <li>Potential pitfalls</li>
-                    </ul>
-                </section>
                 <section>
                     <h2>Best demonstrated with an example</h2>
                     <p>using jQuery animate()</p>
@@ -242,7 +213,7 @@ goDown(upRight(wideSeeThrough(leftFull)));
                     </section>
                     <section>
                         <h4>Functional programming to the rescue (using lodash partials)</h4>
-                        
+
                         <pre><code>
 var leftFull = // function def
 var wideSeeThrough = // function def
@@ -254,7 +225,7 @@ goDown(_.partial(upRight, _.partial(wideSeeThrough,leftFull)));
                         <button id="example4">Run</button>
                         <h4 class="fragment">This works, but</h4>
                     </section>
-                    
+
                 </section>
                 <section>
                    <h2>Ughh</h2>
@@ -271,8 +242,8 @@ goDown(_.partial(upRight, _.partial(wideSeeThrough,leftFull)));
                 </section>
                 <section>
                     <h2>Promises</h2>
-                    <blockquote cite="https://github.com/kriskowal/q"> A promise is an object that represents the return value or the thrown exception that the function may eventually provide.</blockquote>
-                    <small>Q.js docs</small>
+                    <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.</blockquote>
+                    <small>MDN</small>
                 </section>
                 <section>
                     <h2>The middle</h2>
@@ -311,31 +282,6 @@ return goDown(element)
                 </section>
                 <section>
                     <section>
-                        <h2>Step 1: Research libraries</h2>
-                        <ul class="fragment">
-                            <li>Deferred.js</li>
-                            <li>Q.js</li>
-                            <li>task.js</li>
-                            <li>when.js</li>
-                            <li>RSVP.js</li>
-                            <li>jQuery deferred</li>
-                            <li>much much more!</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Hmmm</h2>
-                        <img src="lib/standards.png">
-                    </section>
-                    <section>
-                        <h2>Just kidding</h2>
-                        <h3>There are really just three (kind of)</h3>
-                        <ul>
-                            <li class="fragment">Promises A+</li>
-                            <li class="fragment">Native browser support!</li>
-                            <li class="fragment">jQuery's deferreds  - <span class="fragment">Avoid them!</span></li>
-                        </ul>
-                    </section>
-                    <section>
                         <h2>Making a promise</h2>
                         <h4>Let's convert our animate call into a promise</h4>
                         <p> I'll be using native javascript promises for now</p>
@@ -348,7 +294,7 @@ function goDown(element, callback){
 }
 // new code
 function goDown(element){
-    return new Promise(function(resolve){
+    return new Promise((resolve) => {
         element.animate({
             top : '+=50px'
             }, 1000, resolve);
@@ -363,7 +309,7 @@ function goDown(element){
 // rest of go down
 }
 function upRight(element){
-    return new Promise(function(resolve){
+    return new Promise((resolve)=> {
         element.animate({
             top: '-=50px',
             left : '+=50px'
@@ -434,9 +380,9 @@ function goDown(element){
                     <h2>So then we can do</h2>
                     <pre><code>
 var upRight =// function def
-var goDown = // function def
-// equivalent!
+//...
 
+// equivalent!
 goDown(element)
 .then(function(element){
     return upRight(element);
@@ -489,16 +435,16 @@ goDown(element)
                         <h2>How might this work?</h2>
                         <p>first we need to grab some json</p>
                         <pre><code>
-function fetch(url){
-    var jqueryDeferred = $.getJSON(url);
-    return Promise.resolve(jqueryDeferred);  // wrap jquery promises!
+function fetchUrl(url){
+    return fetch(url)
+           .then(response => response.json())
 }
                         </code></pre>
                     </section>
                     <section>
                         <h2>some glue code</h2>
 <pre><code>function fetchUser(user){
-    return fetch('https://api.github.com/users/'+user)
+    return fetchUrl('https://api.github.com/users/'+user)
 }
 var submitAndRender = function() {
     var button = this;
@@ -739,17 +685,180 @@ function animate(el, options){
                         </code></pre>
                 </section>
                 <section>
-                    <h2>Potential Pitfalls</h2>
-                    <p>Stack traces can disappear</p>
-                    <p class="fragment">Consequence of the async nature of promises</p>
-                    <div class="block" style="top:-20px"></div>
-                    <button id="example8">Run</button>
+                    <h2>Async / Await</h2>
+                    <p>No Magic, only promises underneath</p>
+                    <p></p>
+                    <pre class="fragment"><code>
+var leftFull = // unchanged!!
+// leftFull still returns a promise!
+
+// old way
+goDown(element)
+.then(upRight)
+.then(wideSeeThrough)
+.then(leftFull);
+
+// new way
+const animate = async (element) => {
+  await goDown(element);
+  await upRight(element);
+  await wideSeeThrough(element);
+  await leftFull(element);
+}
+</code></pre>
                 </section>
                 <section>
-                    <h2>Conclusion</h2>
-                    <p>I hope I've given you a good understanding of promises</p>
-                    <p class="fragment">And why they are really powerful</p>
-                    <p class="fragment">What's next?  Generators </p>
+                    <h2>Async / Await</h2>
+                    <p>Equivalent code</p>
+                    <p></p>
+                    <pre class="fragment"><code>
+const asyncGoDown = async (element) => {
+  try{
+    await goDown(element);
+  } catch (error) {
+    console.log(error);
+  }
+  return 'foo';
+}
+
+const asyncGoDownGetsTranslatedAs = (element) => {
+  return new Promise((resolve) => {
+     return goDown(element)
+  }).catch((error) => {
+     console.log(error);
+  }).then( () => {
+     return 'foo';
+  });
+}
+
+</code></pre>
+                </section>
+                <section>
+                    <h2>Async / Await</h2>
+                    <p>All Async methods are just regular methods that return promises</p>
+                    <pre class="fragment"><code>
+const asyncGoDown = async (element) => {
+ // typical stuff
+ return element
+}
+
+// see Ma, no async or await!
+const useGoDown = (element) => {
+  return asyncGoDown(element).then( element => {
+    // do something with dev
+  })
+}
+</code></pre>
+                </section>
+                <section>
+                    <h2>.forEach()</h2>
+                    <p>Gentle reminder</p>
+                    <pre class="fragment"><code>
+console.log('START');
+const doSomething = async (str) => {
+ // typical async stuff
+ console.log('doing something: ' + str);
+}
+['1','2','3'].forEach( async item => {
+  await doSomething(item);
+})
+console.log('DONE');
+// printout:
+// START
+// DONE
+// doing something: 3
+// doing something: 1
+// doing something: 2
+</code></pre>
+                </section>
+                <section>
+                    <h2>.forEach()</h2>
+                    <p>Just calls each function with each item</p>
+                    <pre class="fragment"><code>
+// equivalent!!
+['1','2','3'].forEach( async item => {
+  await doSomething(item);
+})
+
+['1','2','3'].forEach( item => {
+  doSomething(item); // do nothing and throw away the promise
+})
+</code></pre>
+                </section>
+                <section>
+                    <h2>Promise.all()</h2>
+                    <p>use promise.all</p>
+                    <pre class="fragment"><code>
+// equivalent!!
+Promise.all(['1','2','3'].map( async item => {
+  await doSomething(item);
+}))
+</code></pre>
+                </section>
+                <section>
+                    <h2>Don't be scared of promises</h2>
+                    <p>they are often more concise</p>
+                    <pre class="fragment"><code>
+// equivalent!!
+Promise.all(['1','2','3'].map( async item => {
+  await doSomething(item);
+}))
+Promise.all(['1','2','3'].map(item => doSomething(item)))
+Promise.all(['1','2','3'].map(doSomething))
+</code></pre>
+                </section>
+                <section>
+                    <h2>Do you need async await?</h2>
+                    <p>We sometimes put needless dependencies in our code</p>
+                    <pre class="fragment"><code>
+const doSomething = async (item) => {
+  try{
+     const a = await doA(item);
+     await doSomethingElse();  // does not depend on doA or a
+   catch(error) { }
+//  just execute them simultaneously
+const doSomething = item => Promise.all([
+  doA(item),
+  doSomethingElse()
+)].catch(error => {})
+</code></pre>
+                </section>
+                <section>
+                    <h2>Catching errors</h2>
+                    <p>try/catch</p>
+                    <pre class="fragment"><code>
+var leftFull = // unchanged!!
+const animate = async (element) => {
+  try{
+     await goDown(element);
+     await upRight(element);
+     await wideSeeThrough(element);
+     await leftFull(element);
+   catch(error) {
+    // handle error, if it should be handled here!
+   }
+  }
+}
+</code></pre>
+                </section>
+                <section>
+                    <h2>Errors</h2>
+                    <p>Will this catch?</p>
+                    <pre class="fragment"><code>
+const wideSeeThrough = async () => throw new Error('Oops');
+const whatAboutMe = () => throw new Error("double oops");
+const animate = async (element) => {
+  try{
+     await goDown(element);
+     wideSeeThrough(element);  // throws error
+     whatAboutMe(element);  // throws error
+     await leftFull(element);
+   catch(error) {
+    //
+   }
+  }
+}
+</code></pre>
                 </section>
                 <section>
                     <h2>Questions?</h2>
